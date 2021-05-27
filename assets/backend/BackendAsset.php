@@ -15,5 +15,5 @@ class BackendAsset extends BaseAssetBundle
     /**
      * @var string $sourcePath
      */
-    public $sourcePath = '@app/modules/admin/assets';
+ //   public $sourcePath = '@app/modules/admin/assets';
 }
