@@ -1,3 +1,8 @@
+<?php
+use \yii\helpers\Url;
+
+?>
+
 <header id="page-topbar">
     <div class="navbar-header">
         <div class="d-flex">
@@ -5,19 +10,19 @@
             <div class="navbar-brand-box">
                 <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-sm-dark.png" alt="" height="22">
+                                    <img src="<?=Url::to('/themes/backend/images/logo-sm-dark.png') ?>" alt="" height="22">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="assets/images/logo-dark.png" alt="" height="20">
+                                    <img src="<?=Url::to('/themes/backend/images/logo-dark.png') ?>" alt="" height="20">
                                 </span>
                 </a>
 
                 <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-sm-light.png" alt="" height="22">
+                                    <img src="<?=Url::to('/themes/backend/images/logo-sm-light.png') ?>" alt="" height="22">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="assets/images/logo-light.png" alt="" height="20">
+                                    <img src="<?=Url::to('/themes/backend/images/logo-light.png') ?>" alt="" height="20">
                                 </span>
                 </a>
             </div>
@@ -95,7 +100,7 @@
                         </a>
                         <a href="" class="text-reset notification-item">
                             <div class="media">
-                                <img src="assets/images/users/avatar-3.jpg"
+                                <img src="<?=Url::to('/themes/backend/images/users/avatar-3.jpg') ?>"
                                      class="mr-3 rounded-circle avatar-xs" alt="user-pic">
                                 <div class="media-body">
                                     <h6 class="mt-0 mb-1">James Lemire</h6>
@@ -118,20 +123,6 @@
                                     <div class="font-size-12 text-muted">
                                         <p class="mb-1">If several languages coalesce the grammar</p>
                                         <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="" class="text-reset notification-item">
-                            <div class="media">
-                                <img src="assets/images/users/avatar-4.jpg"
-                                     class="mr-3 rounded-circle avatar-xs" alt="user-pic">
-                                <div class="media-body">
-                                    <h6 class="mt-0 mb-1">Salena Layfield</h6>
-                                    <div class="font-size-12 text-muted">
-                                        <p class="mb-1">As a skeptical Cambridge friend of mine occidental.</p>
-                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 1 hours ago</p>
                                     </div>
                                 </div>
                             </div>
