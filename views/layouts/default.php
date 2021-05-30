@@ -32,7 +32,10 @@ HomeAsset::register($this);
 </div>
 <div id="wrapper" class="wrapper clearfix">
     <?= $this->render('partials/header') ?>
-    <?= $content ?>
+    <div style="min-height: 600px">
+        <?= $content ?>
+    </div>
+
     <?= $this->render('partials/footer') ?>
 </div>
 <?php $this->endBody() ?>

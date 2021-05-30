@@ -1,3 +1,18 @@
+/*------------------------------------*\
+    #VARIABLES
+\*------------------------------------*/
+/* Colors Base */
+/* Baseline */
+/* Font Base */
+/* Font Size Base */
+/* Background Base */
+/* Icon Base */
+/* Border-Radius Base */
+/* Media Queries Base */
+/* Variation Colors Base */
+/*------------------------------------*\
+    #LESS MIXINS
+\*------------------------------------*/
 /*-----------------------------------------------------------------------------------
 
 	Theme Name: Hairy
@@ -1214,11 +1229,11 @@ blockquot {
   border-radius: 50%;
   border-radius: 33px;
   background-color: rgba(255, 255, 255, 0.2);
-  -webkit-transition: all .4s;
-  -moz-transition: all .4s;
-  -ms-transition: all .4s;
-  -o-transition: all .4s;
-  transition: all .4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
 }
 .btn--video-bordered .btn--video {
   padding-left: 0;
@@ -1256,9 +1271,9 @@ blockquot {
   background-color: rgba(27, 26, 26, 0.9);
   font-size: 40px;
   display: inline-block;
-  -webkit-transition: all .4s linear;
-  -moz-transition: all .4s linear;
-  transition: all .4s linear;
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  transition: all 0.4s linear;
 }
 .btn--hover-white:active,
 .btn--hover-white:focus,
@@ -2281,9 +2296,15 @@ table tbody tr td {
 /*------------------------------------*\
     #HEADER
 \*------------------------------------*/
+.header-default {
+  background-color: #303030;
+}
 .header-transparent {
   background-color: transparent;
 }
+.header-default + .mtop-100,
+.header-default + .page-title,
+.header-default + .slider,
 .header-transparent + .mtop-100,
 .header-transparent + .page-title,
 .header-transparent + .slider {
@@ -3054,7 +3075,7 @@ ul.dropdown-menu > li.has-dropdown > a:before {
   .mega-dropdown-menu {
     padding: 20px 0 !important;
     width: 100% !important;
-    background-color: #303030!important;
+    background-color: #303030 !important;
     border: none !important;
     margin-top: -23px;
   }
@@ -4514,10 +4535,10 @@ ul.dropdown-menu > li.has-dropdown > a:before {
   margin-bottom: 30px;
 }
 .feature-panel .feature--icon i {
-  -webkit-transition: all .3s linear;
-  -moz-transition: all .3s linear;
-  -ms-transition: all .3s linear;
-  transition: all .3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  transition: all 0.3s linear;
   display: inline-block;
 }
 .feature-panel:hover .feature--icon.feature--icon-animation i {
@@ -4657,9 +4678,9 @@ ul.dropdown-menu > li.has-dropdown > a:before {
   text-align: center;
   border-radius: 50%;
   border: 2px solid rgba(155, 155, 155, 0.2);
-  -webkit-transition: all .2s linear;
-  -moz-transition: all .2s linear;
-  transition: all .2s linear;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
 }
 .feature-left-circle .feature--icon:hover {
   background: #bb8c4b;
@@ -4730,10 +4751,10 @@ ul.dropdown-menu > li.has-dropdown > a:before {
   padding: 50px 20px;
   background-color: #fff;
   border-radius: 2px;
-  -webkit-transition: all .3s linear;
-  -moz-transition: all .3s linear;
-  -ms-transition: all .3s linear;
-  transition: all .3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  transition: all 0.3s linear;
 }
 .info-box .feature-panel .feature--icon {
   color: #616161;
@@ -4897,11 +4918,11 @@ ul.dropdown-menu > li.has-dropdown > a:before {
   max-width: 100%;
   height: auto;
   max-height: 480px;
-  -moz-transition: all .35s linear;
-  -webkit-transition: all .35s linear;
-  -ms-transition: all .35s linear;
-  -o-transition: all .35s linear;
-  transition: all .35s linear;
+  -moz-transition: all 0.35s linear;
+  -webkit-transition: all 0.35s linear;
+  -ms-transition: all 0.35s linear;
+  -o-transition: all 0.35s linear;
+  transition: all 0.35s linear;
 }
 .blog-entry .entry--overlay {
   position: absolute;
@@ -4911,11 +4932,11 @@ ul.dropdown-menu > li.has-dropdown > a:before {
   height: 100%;
   opacity: 0;
   background-color: rgba(51, 51, 51, 0.4);
-  -moz-transition: all .35s linear;
-  -webkit-transition: all .35s linear;
-  -ms-transition: all .35s linear;
-  -o-transition: all .35s linear;
-  transition: all .35s linear;
+  -moz-transition: all 0.35s linear;
+  -webkit-transition: all 0.35s linear;
+  -ms-transition: all 0.35s linear;
+  -o-transition: all 0.35s linear;
+  transition: all 0.35s linear;
 }
 .blog-entry .entry--img:hover .entry--overlay {
   opacity: 1;
@@ -7842,11 +7863,11 @@ ul.comments-list ul.comment-children ul .comment-body .comment {
   text-align: center;
 }
 .service-panel .service--img img {
-  -webkit-transition: all .3s;
-  -moz-transition: all .3s;
-  -ms-transition: all .3s;
-  -o-transition: all .3s;
-  transition: all .3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
 .service-panel:hover .service--img img {
   -webkit-transform: scale(1.1);

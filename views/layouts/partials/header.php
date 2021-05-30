@@ -1,4 +1,4 @@
-<header id="navbar-spy" class="header header-topbar header-transparent header-fixed">
+<header id="navbar-spy" class="header header-topbar header-default header-fixed">
     <div id="top-bar" class="top-bar">
         <div class="container">
             <div class="bottom-bar-border">
