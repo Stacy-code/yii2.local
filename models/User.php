@@ -58,7 +58,6 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
 
-
     /**
      * @return array
      * Правила валідації
@@ -67,7 +66,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             [['active'], 'integer'],
-            [['email', 'password',  'auth_key'], 'string', 'max' => 255],
+            [['email', 'password', 'auth_key'], 'string', 'max' => 255],
             [['email', 'password'], 'required', 'on' => self::LOGIN_SCENARIO],
             [['auth_key', 'reset_key', 'active', 'rememberMe'], 'safe', 'on' => self::LOGIN_SCENARIO],
         ];
@@ -80,10 +79,10 @@ class User extends ActiveRecord implements IdentityInterface
     public function attributeLabels(): array
     {
         return [
-            'id'  =>  'ID',
+            'id' => 'ID',
             'email' => 'Email',
             'password' => 'Password',
-            'auth_key' => 'Auth key' ,
+            'auth_key' => 'Auth key',
             'reset_key' => 'Reset key',
             'active' => 'Active',
             'created_at' => 'Created at',
@@ -145,12 +144,12 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->auth_key === $authKey;
     }
 
-
     /**
      * @param string $email
      * @return User|null
      */
-    public static function findByUserEmail(string $email){
+    public static function findByUserEmail(string $email)
+    {
         return static::findOne(['email' => $email, 'active' => self::ACTIVE_USER]);
     }
 

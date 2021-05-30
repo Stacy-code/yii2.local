@@ -1,39 +1,35 @@
 <?php
 
 
-namespace app\modules\admin\assets;
+namespace app\assets\frontend;
 
-
+use app\assets\BaseAssetBundle;
 use yii\web\JqueryAsset;
 
-class AdminAsset extends BaseAssetBundle
+/**
+ * Class FrontendAsset
+ *
+ * @package app\assets\frontend
+ */
+class LoginAsset extends BaseAssetBundle
 {
     /**
      * @var string $sourcePath
-     * Папка со стилями и скриптами
      */
-    public $sourcePath = '@webroot/themes/backend';
-    /**
-     * @var array
-     * Підключаємо стилі
-     */
+    public $sourcePath = '@webroot/frontend';
+
     public $css = [
         'css/bootstrap.min.css',
         'css/icons.min.css',
         'css/app.min.css',
-   ];
+    ];
 
-    /**
-     * @var array
-     * Підключаємо скріпти
-     */
     public $js = [
         'libs/node-waves/waves.min.js',
         'libs/simplebar/simplebar.min.js',
         'libs/metismenu/metisMenu.min.js',
         'libs/bootstrap/js/bootstrap.bundle.min.js',
         'js/app.js',
-
     ];
 
     /**
@@ -43,6 +39,5 @@ class AdminAsset extends BaseAssetBundle
     public $depends = [
         JqueryAsset::class
     ];
-
 
 }
