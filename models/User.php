@@ -1,39 +1,115 @@
 <?php
 
+
 namespace app\models;
 
-class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
-{
-    public $id;
-    public $username;
-    public $password;
-    public $authKey;
-    public $accessToken;
 
-    private static $users = [
-        '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
+use Yii;
+use yii\base\Exception;
+use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
+
+/**
+ * Class User
+ * @package app\models
+ *
+ * @property int $id
+ * @property string $email
+ * @property string $password
+ * @property string $auth_key
+ * @property string $reset_key
+ * @property int $active
+ * @property string $created_at
+ * @property string $updated_at
+ *
+ *
+ *
+ */
+class User extends ActiveRecord implements IdentityInterface
+{
+
+    /**
+     * @var string LOGIN_SCENARIO
+     */
+    public const LOGIN_SCENARIO = 'login';
+
+    /**
+     * @var int ACTIVE_USER
+     */
+    public const ACTIVE_USER = 1;
+
+    /**
+     * @var bool $rememberMe
+     */
+    public $rememberMe = true;
+
+    /**
+     * @var bool|self $_user
+     */
+    public $_user = false;
+
+    /**
+     * @return string
+     * Назва таблиці
+     */
+    public static function tableName(): string
+    {
+        return '{{%user}}';
+    }
+
 
 
     /**
-     * {@inheritdoc}
+     * @return array
+     * Правила валідації
+     */
+    public function rules(): array
+    {
+        return [
+            [['active'], 'integer'],
+            [['email', 'password',  'auth_key'], 'string', 'max' => 255],
+            [['email', 'password'], 'required', 'on' => self::LOGIN_SCENARIO],
+            [['auth_key', 'reset_key', 'active', 'rememberMe'], 'safe', 'on' => self::LOGIN_SCENARIO],
+        ];
+    }
+
+    /**
+     * @return array
+     * Поля
+     */
+    public function attributeLabels(): array
+    {
+        return [
+            'id'  =>  'ID',
+            'email' => 'Email',
+            'password' => 'Password',
+            'auth_key' => 'Auth key' ,
+            'reset_key' => 'Reset key',
+            'active' => 'Active',
+            'created_at' => 'Created at',
+            'updated_at' => 'Updated at'
+
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function scenarios(): array
+    {
+        $scenario = parent::scenarios();
+        $scenario[self::LOGIN_SCENARIO] = [
+            'email', 'password'
+        ];
+        return $scenario;
+    }
+
+    /**
+     * @inheritDoc
      */
     public static function findIdentity($id)
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        return static::findOne($id);
     }
 
     /**
@@ -41,31 +117,9 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
-        }
-
-        return null;
+        //todo достать пользователя по токену
     }
 
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
-    {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
-        }
-
-        return null;
-    }
 
     /**
      * {@inheritdoc}
@@ -80,7 +134,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
      */
     public function getAuthKey()
     {
-        return $this->authKey;
+        return $this->auth_key;
     }
 
     /**
@@ -88,17 +142,85 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
      */
     public function validateAuthKey($authKey)
     {
-        return $this->authKey === $authKey;
+        return $this->auth_key === $authKey;
+    }
+
+
+    /**
+     * @param string $email
+     * @return User|null
+     */
+    public static function findByUserEmail(string $email){
+        return static::findOne(['email' => $email, 'active' => self::ACTIVE_USER]);
     }
 
     /**
-     * Validates password
-     *
-     * @param string $password password to validate
-     * @return bool if password provided is valid for current user
+     * @return $this|boolean
      */
-    public function validatePassword($password)
+    public function getUser()
     {
-        return $this->password === $password;
+        if ($this->_user === false) {
+            $this->_user = self::findByUserEmail($this->email);
+        }
+        return $this->_user;
     }
+
+    /**
+     * Get user password hash
+     *
+     * @param string|null $email
+     *
+     * @return string|null
+     */
+    public function getHash(string $email = null): ?string
+    {
+        $hash = self::find()->select('password')->where([
+            'email' => $email,
+            'active' => self::ACTIVE_USER
+        ])->asArray()->one();
+        return $hash['password'];
+    }
+
+    /**
+     * Validate login password
+     *
+     * @param string $password
+     *
+     * @return boolean
+     */
+    public function validatePassword(string $password): bool
+    {
+        return Yii::$app->security->validatePassword($password, $this->getHash($this->email));
+    }
+
+    /**
+     * @throws Exception
+     * Генерирует ключ
+     */
+    public function generateAuthKey(): void
+    {
+        $this->auth_key = Yii::$app->security->generateRandomString(32);
+    }
+
+    /**
+     * Logs in a user using the provided username and password.
+     *
+     * @return bool
+     * @throws Exception
+     */
+    public function login(): bool
+    {
+        $this->scenario = 'login';
+        if ($this->validate() && $this->getUser() && $this->validatePassword($this->password)) {
+            if ($this->rememberMe) {
+                $user = $this->getUser();
+                $user->generateAuthKey();
+                $user->save();
+            }
+            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+        }
+        Yii::$app->session->setFlash('error', 'Не верный логин или пароль!');
+        return false;
+    }
+
 }
