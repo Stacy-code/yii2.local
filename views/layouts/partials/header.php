@@ -19,7 +19,12 @@ use yii\helpers\Url;
                         </ul>
                     </div><!-- .col-md-6 end -->
                     <div class="col-xs-12 col-sm-6 col-md-6 top--info text-right text-center-xs">
-                        <span class="top--login"><i class="lnr lnr-exit"></i><a href="identity/login">Login</a> / <a href="identity/register">Register</a></span>
+                        <?php if(Yii::$app->user->isGuest) :?>
+                        <span class="top--login"><i class="lnr lnr-exit"></i><a href="<?= Url::to('/identity/login')?>">Login</a> / <a href="<?= Url::to('/identity/register')?>">Register</a></span>
+                        <?php else : ?>
+                        <span class="top--login">Welcome <?= Yii::$app->user->identity->name?> !</span>
+                        <span class="top--login"><i class="lnr lnr-exit"></i><a href="<?= Url::to('/identity/login/logout')?>">Log out</a></span>
+                        <?php endif; ?>
                         <span class="top--social">
 						<a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
 						<a class="twitter" href="#"><i class="fa fa-twitter"></i></a>

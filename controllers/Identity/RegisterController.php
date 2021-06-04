@@ -8,9 +8,11 @@ use yii\base\Exception;
 use yii\helpers\Url;
 use yii\web\Controller;
 
-class LoginController extends Controller
+
+class RegisterController extends Controller
 {
     public $layout = 'auth';
+
     /**
      * @return mixed;
      * @throws Exception
@@ -18,41 +20,29 @@ class LoginController extends Controller
     public function actionIndex()
     {
         if (Yii::$app->user->isGuest) {
-            return $this->actionLogin();
+            return $this->actionRegister();
         }
         return Yii::$app->response->redirect(Url::toRoute(['/home']));
     }
 
     /**
      * @return mixed
-     * @throws Exception
      */
-    public function actionLogin()
-    {
-        if (Yii::$app->user->isGuest) {
+    public function actionRegister(){
+
+        if (Yii::$app->user->isGuest){
             $model = new User();
-            $model->scenario = 'login';
-            if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            $model->scenario = 'register';
+            if ($model->load(Yii::$app->request->post()) && $model->register()) {
                 return Yii::$app->response->redirect(Url::toRoute(['/home']));
             }
-            return $this->render('login', [
+            return $this->render('register', [
                 'model' => $model
             ]);
         }
         return Yii::$app->response->redirect(Url::toRoute(['/home']));
-    }
-
-    /**
-     * Logout action.
-     *
-     * @return mixed
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
-        return Yii::$app->response->redirect(Url::toRoute(['/home']));
-
 
     }
+
 
 }
