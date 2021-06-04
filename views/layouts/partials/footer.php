@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4 footer--widget-about">
                     <div class="footer--widget-content">
-                        <img class="mb-20" src="http://demo.zytheme.com/hairy/assets/images/logo/logo-light.png" alt="logo">
+                        <img class="mb-20" src="/web/themes/frontend/images/logo/logo-l.png" alt="logo">
                         <p>Proin gravida nibh vel velit auctor aliquet anean lorem quis. bindum auctor, nisi elite conset ipsums sagtis id duis sed odio sit.</p>
                         <div class="work--schedule clearfix">
                             <ul class="list-unstyled">

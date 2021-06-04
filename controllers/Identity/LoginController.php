@@ -19,7 +19,7 @@ class LoginController extends Controller
         if (Yii::$app->user->isGuest) {
             return $this->actionLogin();
         }
-        return Yii::$app->response->redirect(Url::toRoute(['/']));
+        return Yii::$app->response->redirect(Url::toRoute(['/home']));
     }
 
     /**
@@ -33,13 +33,13 @@ class LoginController extends Controller
             $identityService = new User();
             $identityService->scenario = 'login';
             if ($identityService->load(Yii::$app->request->post()) && $identityService->login()) {
-                return Yii::$app->response->redirect(Url::toRoute(['/']));
+                return Yii::$app->response->redirect(Url::toRoute(['/home']));
             }
             return $this->render('login', [
-                'login' => $identityService
+                'model' => $identityService
             ]);
         }
-        return Yii::$app->response->redirect(Url::toRoute(['/']));
+        return Yii::$app->response->redirect(Url::toRoute(['/home']));
     }
 
     /**
@@ -50,7 +50,7 @@ class LoginController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-        return Yii::$app->response->redirect(Url::toRoute(['/']));
+        return Yii::$app->response->redirect(Url::toRoute(['/home']));
 
 
     }

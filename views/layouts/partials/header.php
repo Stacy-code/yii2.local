@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Url;
+?>
+
 <header id="navbar-spy" class="header header-topbar header-default header-fixed">
     <div id="top-bar" class="top-bar">
         <div class="container">
@@ -14,7 +19,7 @@
                         </ul>
                     </div><!-- .col-md-6 end -->
                     <div class="col-xs-12 col-sm-6 col-md-6 top--info text-right text-center-xs">
-                        <span class="top--login"><i class="lnr lnr-exit"></i><a href="#">Login</a> / <a href="#">Register</a></span>
+                        <span class="top--login"><i class="lnr lnr-exit"></i><a href="identity/login">Login</a> / <a href="identity/register">Register</a></span>
                         <span class="top--social">
 						<a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
 						<a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
@@ -38,8 +43,8 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="logo" href="index-2.html">
-                        <img class="logo-light" src="http://demo.zytheme.com/hairy/assets/images/logo/logo-light.png" alt="Hairy Logo">
-                        <img class="logo-dark" src="http://demo.zytheme.com/hairy/assets/images/logo/logo-light.png" alt="Hairy Logo">
+                        <img class="logo-light"  src="<?=Url::to('/themes/frontend/images/logo/logo-l.png')?>" alt="Logo-light">
+                        <img class="logo-dark" src="<?=Url::to('/themes/frontend/images/logo/logo-l.png')?>"  alt="Logo-dark">
                     </a>
                 </div>
 
