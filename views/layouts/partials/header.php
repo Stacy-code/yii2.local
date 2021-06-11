@@ -23,7 +23,7 @@ use yii\helpers\Url;
                         <span class="top--login"><i class="lnr lnr-exit"></i><a href="<?= Url::to('/identity/login')?>">Login</a> / <a href="<?= Url::to('/identity/register')?>">Register</a></span>
                         <?php else : ?>
                         <span class="top--login">Welcome <?= Yii::$app->user->identity->name?> !</span>
-                        <span class="top--login"><i class="lnr lnr-exit"></i><a href="<?= Url::to('/identity/login/logout')?>">Log out</a></span>
+                        <span class="top--login"><i class="lnr lnr-exit"></i><a href="<?= Url::to('/identity/logout')?>">Log out</a></span>
                         <?php endif; ?>
                         <span class="top--social">
 						<a class="facebook" href="#"><i class="fa fa-facebook"></i></a>

@@ -13,7 +13,7 @@ use yii\helpers\Url;
 
 
 <div class="home-btn d-none d-sm-block">
-    <a href="<?= Url::to('/home') ?>"><i class="mdi mdi-home-variant h2 text-white"></i></a>
+    <a href="<?= Url::to('/') ?>"><i class="mdi mdi-home-variant h2 text-white"></i></a>
 </div>
 <div>
     <div class="container-fluid p-0">
@@ -25,12 +25,9 @@ use yii\helpers\Url;
                             <div class="col-lg-9">
                                 <div>
                                     <div class="text-center">
-                                        <div>
-                                            <a href="index.html" class="logo"><img src="assets/images/logo-dark.png" height="20" alt="logo"></a>
-                                        </div>
 
-                                        <h4 class="font-size-18 mt-4">Register account</h4>
-                                        <p class="text-muted">Get your free Nazox account now.</p>
+                                        <h4 class="font-size-18 mt-4">Hello!</h4>
+                                        <p class="text-muted">Sign in to continue to Omen Barbershop haircut!</p>
                                     </div>
 
                                     <div class="p-2 mt-5">
@@ -52,15 +49,6 @@ use yii\helpers\Url;
                                             'placeholder' => 'Enter email',
                                         ]) ?>
 
-                                        <?= $form->field($model, 'name', [
-                                            'template' => "<div class=\"auth-form-group-custom mb-4\"><i class=\"ri-user-2-line auti-custom-input-icon\"></i>{label}{input}</div>\n<div class=\"col-lg-12 text-danger\">{error}</div>",
-                                        ])->textInput([
-                                            'autofocus' => true,
-                                            'class' => 'form-control',
-                                            'placeholder' => 'Enter name',
-                                        ]) ?>
-
-
                                         <?= $form->field($model, 'password', [
                                             'template' => "<div class=\"auth-form-group-custom mb-4\"><i class=\"ri-lock-2-line auti-custom-input-icon\"></i>{label}{input}</div>\n<div class=\"col-lg-12 text-danger\">{error}</div>",
                                         ])->passwordInput([
@@ -68,25 +56,29 @@ use yii\helpers\Url;
                                             'placeholder' => 'Enter password',
                                         ]) ?>
 
-                                        <?= $form->field($model, 'passwordConfirm', [
-                                            'template' => "<div class=\"auth-form-group-custom mb-4\"><i class=\"ri-lock-2-line auti-custom-input-icon\"></i>{label}{input}</div>\n<div class=\"col-lg-12 text-danger\">{error}</div>",
-                                        ])->passwordInput([
-                                            'class' => 'form-control',
-                                            'placeholder' => 'Enter again password',
-                                        ]) ?>
 
-                                        <div class="mt-4 text-center">
-                                            <?= Html::submitButton('Зареєструватися', ['class' => 'btn btn-primary w-md waves-effect waves-light', 'name' => 'login-button']) ?>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input"
+                                                   id="rememberMe"  name="User[rememberMe]">
+                                            <label class="custom-control-label" for="rememberMe">Remember
+                                                me</label>
                                         </div>
 
-                                            <div class="mt-4 text-center">
-                                                <p class="mb-0">By registering you agree to the Nazox <a href="#" class="text-primary">Terms of Use</a></p>
-                                            </div>
+                                        <div class="mt-4 text-center">
+                                            <?= Html::submitButton('Увійти', ['class' => 'btn btn-primary w-md waves-effect waves-light', 'name' => 'login-button']) ?>
+                                        </div>
+
+                                        <div class="mt-4 text-center">
+                                            <a href="auth-recoverpw.html" class="text-muted"><i
+                                                        class="mdi mdi-lock mr-1"></i> Forgot your password?</a>
+                                        </div>
                                         <?php ActiveForm::end(); ?>
                                     </div>
 
                                     <div class="mt-5 text-center">
-                                        <p>Already have an account ? <a href="<?= Url::to('/identity/login') ?>" class="font-weight-medium text-primary"> Login</a> </p>
+                                        <p>Don't have an account ? <a href="<?= Url::to('/identity/register') ?>"
+                                                                      class="font-weight-medium text-primary">
+                                                Register </a></p>
                                     </div>
                                 </div>
 
@@ -103,6 +95,3 @@ use yii\helpers\Url;
         </div>
     </div>
 </div>
-
-
-
