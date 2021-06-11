@@ -28,9 +28,16 @@ $config = [
         'db' => $db,
         'authManager' => [
             'class' => yii\rbac\DbManager::class,
+
         ],
     ],
     'params' => $params,
+    'controllerMap' => [
+        'seeder' => [
+            'class' => 'antonyz89\seeder\SeederController',
+            'seederNamespace' => 'app\console'
+        ],
+    ],
     /*
     'controllerMap' => [
         'fixture' => [ // Fixture generation command line.
