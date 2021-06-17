@@ -7,6 +7,7 @@ namespace app\models;
 use Yii;
 use yii\base\Exception;
 use yii\db\ActiveRecord;
+use yii\db\mssql\PDO;
 use yii\web\IdentityInterface;
 
 /**
@@ -260,5 +261,7 @@ class User extends ActiveRecord implements IdentityInterface
         Yii::$app->session->setFlash('error', 'Не верный логин или пароль!');
         return false;
     }
+
+
 
 }

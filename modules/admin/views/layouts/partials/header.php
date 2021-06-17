@@ -152,3 +152,73 @@ use \yii\helpers\Url;
         </div>
     </div>
 </header>
+<div class="vertical-menu">
+
+    <div data-simplebar class="h-100">
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu list-unstyled" id="side-menu">
+                <li class="menu-title">Меню</li>
+
+                <li>
+                    <a href="" class="">
+                        <i class="ri-table-2"></i>
+                        <span>Список записей</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="<?= Url::to('/admin/user/index')?>" class=" waves-effect">
+                        <i class="ri-table-2"></i>
+                        <span>Список пользователей</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="calendar.html" class=" waves-effect">
+                        <i class="ri-calendar-2-line"></i>
+                        <span>Календарь</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="barber.html" class=" waves-effect">
+                        <i class="ri-barbers-2-line"></i>
+                        <span>Сотрудники</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="apps-chat.html" class=" waves-effect">
+                        <i class="ri-chat-1-line"></i>
+                        <span>Чат</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="callback.html" class=" waves-effect">
+                        <i class=""></i>
+                        <span>Отзывы</span>
+                    </a>
+                </li>
+
+
+                <li class="menu-title">Редактор страницы</li>
+                <li>
+                    <a href="" class="">
+                        <i class="ri-gallery-line"></i>
+                        <span>Галерея</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="add-news.html" class=" waves-effect">
+                        <i class="ri-news-1-line"></i>
+                        <span>Новости</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- Sidebar -->
+    </div>
+</div>
