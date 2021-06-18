@@ -33,5 +33,20 @@ class UserRepository extends AbstractRepository
         parent::__construct($entity);
     }
 
+    public function processDelete(): array
+    {
+        $result = [
+            'success' => false,
+        ];
+        try {
+            $result['success'] = true;
+            $this->entityModel->delete();
+
+        } catch (\Exception $e) {
+            $result['success'] = false;
+        }
+        return $result;
+    }
+
 
 }

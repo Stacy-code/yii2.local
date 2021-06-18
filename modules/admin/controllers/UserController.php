@@ -7,6 +7,7 @@ namespace app\modules\admin\controllers;
 use app\models\User;
 use app\controllers\AppController;
 use app\modules\admin\assets\UserAsset;
+use app\services\user\UserService;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\db\Exception;
@@ -16,10 +17,23 @@ use yii\helpers\Url;
 class UserController extends AppController
 {
     /**
-     * @var User
+     * @var UserService
      */
-    public $users;
+    public $service;
 
+
+    /**
+     * UserController constructor.
+     * @param $id
+     * @param $module
+     * @param UserService $service
+     * @param array $config
+     */
+    public function __construct($id, $module, UserService $service, $config = [])
+    {
+        parent::__construct($id, $module, $config);
+        $this->service = $service;
+    }
 
     public function init()
     {
@@ -32,15 +46,8 @@ class UserController extends AppController
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => User::find(),
-            'pagination' => [
-                'pageSize' => 15,
-            ],
-        ]);
-
         return $this->render('index',
-            ['dataProvider' => $dataProvider]);
+            ['dataProvider' => $this->service->dataProvider]);
     }
 
 
@@ -67,21 +74,9 @@ class UserController extends AppController
      */
     public function actionDelete(int $id)
     {
-
-
-        try {
-            $user = User::findOne($id);
-            $user->delete();
-            Yii::$app->session->setFlash('success' , "Видалено один запис!");
-
-        } catch (\Exception $e) {
-            Yii::$app->session->setFlash('success' , "Не вдалося видалити запис!");
-
-        }
-
+        $result = $this->service->delete(['id' => $id]);
+        Yii::$app->session->setFlash('success' , $result['msg']);
         return Yii::$app->response->redirect(Url::toRoute(['/admin/user/index']), 301);
-
-
     }
 
 

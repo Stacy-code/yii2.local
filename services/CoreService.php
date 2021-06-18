@@ -14,7 +14,7 @@ use yii\data\ActiveDataProvider;
  * Class CoreService
  *
  * @property AbstractRepository $repository
- * @property ActiveRecord       $filterModel
+ * @property ActiveRecord $filterModel
  * @property ActiveDataProvider $dataProvider
  */
 class CoreService extends BaseObject implements CoreServiceInterface
@@ -53,7 +53,7 @@ class CoreService extends BaseObject implements CoreServiceInterface
      * CoreService constructor.
      *
      * @param AbstractRepository $repository
-     * @param array              $config
+     * @param array $config
      */
     public function __construct(AbstractRepository $repository, $config = [])
     {
@@ -137,7 +137,7 @@ class CoreService extends BaseObject implements CoreServiceInterface
 
     /**
      * @param ActiveRecord|null $model
-     * @param array             $data
+     * @param array $data
      *
      * @return array
      */
@@ -164,7 +164,9 @@ class CoreService extends BaseObject implements CoreServiceInterface
         if (!empty($condition)) {
             $deleteModel = $this->repository
                 ->getModel($condition)->one();
-            $result = $this->repository->delete($deleteModel);
+            if ($deleteModel instanceof ActiveRecord) {
+                $result = $this->repository->delete($deleteModel);
+            }
         }
         return array_merge($result, [
             'msg' => $result['success']
