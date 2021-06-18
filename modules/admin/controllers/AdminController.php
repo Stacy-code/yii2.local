@@ -22,22 +22,6 @@ class AdminController extends AppController
             ['users' =>$users]);
     }
 
-    /**
-     * Обновление записи
-     */
-    public function actionUpdate(){
-
-    }
-
-    /**
-     * Удаление записи
-     */
-    public function actionDelete(){
-        $id = (int)$_POST['id'];
-        $user= User::findOne($id);
-        $user->delete();
-        return $this->render('index');
-    }
 
 
 

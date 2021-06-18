@@ -6,7 +6,9 @@ namespace app\modules\admin\controllers;
 
 use app\models\User;
 use app\controllers\AppController;
+use app\modules\admin\assets\UserAsset;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\db\Exception;
 use yii\db\StaleObjectException;
 use yii\helpers\Url;
@@ -18,28 +20,50 @@ class UserController extends AppController
      */
     public $users;
 
-    public $layout = 'user';
+
+    public function init()
+    {
+        parent::init();
+        UserAsset::register($this->view);
+    }
 
     /**
      * @return string
      */
     public function actionIndex()
     {
-        $users = User::find()->all();
+        $dataProvider = new ActiveDataProvider([
+            'query' => User::find(),
+            'pagination' => [
+                'pageSize' => 15,
+            ],
+        ]);
+
         return $this->render('index',
-            ['users' => $users]);
+            ['dataProvider' => $dataProvider]);
     }
+
 
     /**
      * Обновление записи
      */
-    public function actionUpdate()
+    public function actionUpdate(int $id)
     {
+        $user = User::findOne($id);
 
+        if($user->load(Yii::$app->request->post()) && $user->save()){
+            Yii::$app->session->setFlash('success' , "Запис відновлено!");
+            return Yii::$app->response->redirect(Url::toRoute(['/admin/user/index']), 301);
+        }
+        return $this->render('update',[
+            'user' => $user
+            ]
+        );
     }
 
     /**
      * Удаление записи
+     * @throws \Throwable
      */
     public function actionDelete(int $id)
     {
@@ -50,7 +74,7 @@ class UserController extends AppController
             $user->delete();
             Yii::$app->session->setFlash('success' , "Видалено один запис!");
 
-        } catch (StaleObjectException $e) {
+        } catch (\Exception $e) {
             Yii::$app->session->setFlash('success' , "Не вдалося видалити запис!");
 
         }
