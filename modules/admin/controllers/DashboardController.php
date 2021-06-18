@@ -2,10 +2,10 @@
 
 namespace app\modules\admin\controllers;
 
+use app\modules\admin\assets\AdminAsset;
 use Yii;
 use yii\base\Module as BaseModule;
 use app\controllers\AppController;
-use app\assets\backend\BackendAsset;
 use yii\web\ErrorAction;
 use yii\web\Response;
 
@@ -34,7 +34,7 @@ class DashboardController extends AppController
     public function init() :void
     {
         parent::init();
-        BackendAsset::register(Yii::$app->view);
+        AdminAsset::register(Yii::$app->view);
     }
 
     /**
@@ -44,7 +44,8 @@ class DashboardController extends AppController
     {
         return [
             'error' => [
-                'class' => ErrorAction::class
+                'class' => ErrorAction::class,
+                'view' => '@app/modules/admin/views/dashboard/error.php'
             ]
         ];
     }
@@ -83,7 +84,9 @@ class DashboardController extends AppController
     public function actionError(): string
     {
         $exception = Yii::$app->errorHandler->exception;
+        dd( Yii::$app->errorHandler);
         if ($exception !== null) {
+
             return $this->render('error', [
                 'exception' => $exception
             ]);

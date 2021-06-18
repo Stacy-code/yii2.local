@@ -24,14 +24,14 @@ class Module extends BaseModule
     public function init(): void
     {
         parent::init();
-        Yii::$app->user->loginUrl = '/admin/identity/login';
+        Yii::$app->user->loginUrl = '/identity/login';
         Yii::$app->errorHandler->errorAction = 'admin/dashboard/error'; //dashboardController
     }
 
     /**
      * @return array
      */
-    /*public function behaviors(): array
+    public function behaviors(): array
     {
         return [
             'access' => [
@@ -40,14 +40,9 @@ class Module extends BaseModule
                     [
                         'allow' => true,
                         'roles' => ['admin', 'manager'],
-                    ],
-                    [
-                        'allow' => true,
-                        'controllers' => ['admin/identity'],
-                        'actions' => ['login'],
                     ]
                 ]
             ]
         ];
-    }*/
+    }
 }
