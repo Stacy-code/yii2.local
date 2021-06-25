@@ -57,10 +57,9 @@ class UserController extends AppController
     public function actionUpdate(int $id)
     {
         $user = User::findOne($id);
-
         if($user->load(Yii::$app->request->post()) && $user->save()){
             Yii::$app->session->setFlash('success' , "Запис відновлено!");
-            return Yii::$app->response->redirect(Url::toRoute(['/admin/user/index']), 301);
+                 return Yii::$app->response->redirect(Url::toRoute(['/admin/user/index']), 301);
         }
         return $this->render('update',[
             'user' => $user

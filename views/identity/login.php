@@ -26,8 +26,8 @@ use yii\helpers\Url;
                                 <div>
                                     <div class="text-center">
 
-                                        <h4 class="font-size-18 mt-4">Hello!</h4>
-                                        <p class="text-muted">Sign in to continue to Omen Barbershop haircut!</p>
+                                        <h4 class="font-size-18 mt-4">Увійти</h4>
+                                        <p class="text-muted">Раді вітати вас в Omen barbershop!</p>
                                     </div>
 
                                     <div class="p-2 mt-5">
@@ -46,22 +46,22 @@ use yii\helpers\Url;
                                         ])->textInput([
                                             'autofocus' => true,
                                             'class' => 'form-control',
-                                            'placeholder' => 'Enter email',
+                                            'placeholder' => 'Введіть електронну адресу',
                                         ]) ?>
 
                                         <?= $form->field($model, 'password', [
                                             'template' => "<div class=\"auth-form-group-custom mb-4\"><i class=\"ri-lock-2-line auti-custom-input-icon\"></i>{label}{input}</div>\n<div class=\"col-lg-12 text-danger\">{error}</div>",
                                         ])->passwordInput([
                                             'class' => 'form-control',
-                                            'placeholder' => 'Enter password',
+                                            'placeholder' => 'Введіть пароль',
                                         ]) ?>
 
 
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input"
                                                    id="rememberMe"  name="User[rememberMe]">
-                                            <label class="custom-control-label" for="rememberMe">Remember
-                                                me</label>
+                                            <label class="custom-control-label" for="rememberMe">Запам'ятати мене
+                                                </label>
                                         </div>
 
                                         <div class="mt-4 text-center">
@@ -70,15 +70,15 @@ use yii\helpers\Url;
 
                                         <div class="mt-4 text-center">
                                             <a href="auth-recoverpw.html" class="text-muted"><i
-                                                        class="mdi mdi-lock mr-1"></i> Forgot your password?</a>
+                                                        class="mdi mdi-lock mr-1"></i>Забули пароль?</a>
                                         </div>
                                         <?php ActiveForm::end(); ?>
                                     </div>
 
                                     <div class="mt-5 text-center">
-                                        <p>Don't have an account ? <a href="<?= Url::to('/identity/register') ?>"
+                                        <p>Не маєте облікового запису? <a href="<?= Url::to('/identity/register') ?>"
                                                                       class="font-weight-medium text-primary">
-                                                Register </a></p>
+                                                Зареєструватися </a></p>
                                     </div>
                                 </div>
 

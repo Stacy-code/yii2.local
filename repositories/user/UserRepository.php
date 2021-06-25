@@ -48,5 +48,20 @@ class UserRepository extends AbstractRepository
         return $result;
     }
 
+    public function processUpdate(): array
+    {
+        $result = [
+            'success' => false,
+        ];
+        try {
+            $result['success'] = true;
+            $this->entityModel->update();
+
+        } catch (\Exception $e) {
+            $result['success'] = false;
+        }
+        return $result;
+    }
+
 
 }

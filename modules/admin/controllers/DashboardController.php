@@ -84,7 +84,6 @@ class DashboardController extends AppController
     public function actionError(): string
     {
         $exception = Yii::$app->errorHandler->exception;
-        dd( Yii::$app->errorHandler);
         if ($exception !== null) {
 
             return $this->render('error', [

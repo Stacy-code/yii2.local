@@ -72,7 +72,7 @@ use yii\helpers\Url;
                                                     $columnView = '<div class="btn-group btn-group-sm" role="group"
                                                          aria-label="Large button group">
                                                         <a class="btn btn-secondary mr-2 text-md "
-                                                           href="'. Url::to(['update', 'id' => $model->id]) .'">Update</a>
+                                                           href="'. Url::to(['user/update', 'id' => $model->id]) .'">Update</a>
                                                         <a class="btn btn-danger"
                                                            href="'. Url::to(['delete', 'id' => $model->id]) .'"
                                                            data-handler="deleteRow"
@@ -83,7 +83,7 @@ use yii\helpers\Url;
                                                     $columnView = '<div class="btn-group btn-group-sm" role="group"
                                                          aria-label="Large button group">
                                                         <a class="btn btn-secondary mr-2 text-md "
-                                                           href="'. Url::to(['update', 'id' => $model->id]) .'">Update</a>
+                                                           href="'. Url::to(['user/update', 'id' => $model->id]) .'">Update</a>
                                                     </div>';
                                                 }
                                                 return $columnView;

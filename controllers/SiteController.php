@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\web\ErrorAction;
 
 
 /**
@@ -25,7 +26,8 @@ class SiteController extends AppController
     {
         return [
             'error' => [
-                'class' => yii\web\ErrorAction::class,
+                'class' => ErrorAction::class,
+                'view' => '@app/views/site/error.php'
             ]
         ];
     }
@@ -38,4 +40,18 @@ class SiteController extends AppController
         return $this->render('home');
     }
 
+    /**
+     * @return string
+     */
+    public function actionError(): string
+    {
+        $exception = Yii::$app->errorHandler->exception;
+        if ($exception !== null) {
+
+            return $this->render('error', [
+                'exception' => $exception
+            ]);
+        }
+        return '';
+    }
 }
