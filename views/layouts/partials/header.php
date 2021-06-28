@@ -57,14 +57,8 @@ use yii\helpers\Url;
                 <div class="collapse navbar-collapse pull-right" id="navbar-collapse-1">
                     <ul class="nav navbar-nav nav-pos-right nav-bordered-right snavbar-left">
                         <!-- Home Menu -->
-                        <li class="has-dropdown active">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle menu-item">home</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="index-2.html">homepage 1</a></li>
-                                <li><a href="homepage-2.html">homepage 2</a></li>
-                                <li><a href="homepage-3.html">homepage 3</a></li>
-                                <li><a href="landing.html">landing</a></li>
-                            </ul>
+                        <li>
+                            <a href="<?= Url::to('/')?>">home</a>
                         </li>
                         <!-- li end -->
                         <!-- Pages Menu -->
@@ -93,15 +87,8 @@ use yii\helpers\Url;
                         </li>
                         <!-- li end -->
                         <!-- Gallery Menu-->
-                        <li class="has-dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle menu-item">Gallery</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="gallery-3cols.html">gallery 3 columns</a></li>
-                                <li><a href="gallery-4cols.html">gallery 4 columns</a></li>
-                                <li><a href="gallery-masonry.html">gallery masonry</a></li>
-                                <li><a href="gallery-single-images.html">single images</a></li>
-                                <li><a href="gallery-single-slider.html">single slider</a></li>
-                            </ul>
+                        <li>
+                            <a href="<?= Url::to('/site/gallery')?>">Gallery</a>
                         </li>
                         <!-- li end -->
                         <!-- Blog Menu-->
@@ -270,7 +257,7 @@ use yii\helpers\Url;
                     <!-- Module Cart -->
                     <div class="module module-cart pull-left">
                         <div class="module-icon">
-                            <a class="btn btn--white btn--bordered btn--rounded" href="#">Book Online</a>
+                            <a class="btn btn--white btn--bordered btn--rounded" href="<?= Url::to('/site/book')?>">Book Online</a>
                         </div>
                     </div>
                     <!-- .module-cart end -->
