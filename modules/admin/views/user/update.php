@@ -25,19 +25,19 @@ use yii\helpers\Url;
 
                                 <div class="form-group row">
                                     <div class="col-md-10">
-                                        <?=$form->field($user , 'name')?>
+                                        <?=$form->field($user , 'name')->textInput(['value' => $user->name])?>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col-md-10">
-                                        <?=$form->field($user , 'email')?>
+                                        <?=$form->field($user , 'email')->textInput(['value' => $user->email])?>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col-md-10">
-                                       <?=$form->field($user , 'active')?>
+                                       <?=$form->field($user , 'active')->textInput(['value' => $user->active])?>
                                     </div>
                                 </div>
 

@@ -39,7 +39,12 @@ use yii\helpers\Url;
                                 </ol>
                             </div>
 
+
+
                         </div>
+
+                        <a class="btn btn-primary mr-2 text-md "
+                           href="<?=Url::to(['user/create'])?>">Створити</a>
                     </div>
                 </div>
                 <div class="row">

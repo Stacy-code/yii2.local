@@ -52,6 +52,23 @@ class UserController extends AppController
 
 
     /**
+     * Добавление записи
+     */
+    public function actionCreate()
+    {
+        $user = new User();
+
+        if($user->load(Yii::$app->request->post()) && $user->save()){
+            Yii::$app->session->setFlash('success' , "Запис cтворено!");
+            return Yii::$app->response->redirect(Url::toRoute(['/admin/user/index']), 301);
+        }
+        return $this->render('create',[
+                'user' => $user
+            ]
+        );
+    }
+
+    /**
      * Обновление записи
      */
     public function actionUpdate(int $id)
@@ -77,6 +94,8 @@ class UserController extends AppController
         Yii::$app->session->setFlash('success' , $result['msg']);
         return Yii::$app->response->redirect(Url::toRoute(['/admin/user/index']), 301);
     }
+
+
 
 
 }
