@@ -2,10 +2,14 @@
 
 namespace app\controllers;
 
+use app\services\book\BookService;
 use Yii;
+use yii\base\Module as BaseModule;
 use yii\helpers\Url;
 use yii\web\ErrorAction;
 use app\models\Book;
+use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 
 /**
@@ -24,6 +28,31 @@ class SiteController extends AppController
      * @var string $layout
      */
     public $layout = 'default';
+
+    /**
+     * @var BookService
+     */
+    public $service;
+
+
+    /**
+     * UserController constructor.
+     * @param $id
+     * @param $module
+     * @param BookService $service
+     * @param array $config
+     */
+    public function __construct(
+        $id,
+        BaseModule $module,
+        BookService $service,
+        $config = []
+    )
+    {
+        parent::__construct($id, $module, $config);
+        $this->service = $service;
+    }
+
 
 
     /**
@@ -60,12 +89,13 @@ class SiteController extends AppController
      */
     public function actionBook()
     {
-
         $book = new Book();
 
-        if($book->load(Yii::$app->request->post()) && $book->save()){
-            Yii::$app->session->setFlash('success' , "Запис cтворено!");
-            return Yii::$app->response->redirect(Url::toRoute(['book']));
+        if (Yii::$app->request->isPost) {
+
+            $this->service->create(Yii::$app->request->post());
+            Yii::$app->session->setFlash('success' , "Запис відновлено!");
+            return Yii::$app->response->redirect(Url::toRoute(['/']), 301);
         }
         return $this->render('book',[
                 'book' => $book

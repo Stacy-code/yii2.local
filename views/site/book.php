@@ -13,19 +13,19 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <section id="booking" class="booking bg-white">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <?php if (Yii::$app->session->hasFlash('success')): ?>
-                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                        <?php echo Yii::$app->session->getFlash('success'); ?>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                <?php endif; ?>
-            </div>
-        </div>
-        <div class="row clearfix">
+         <div class="row clearfix">
+             <div class="row">
+                 <div class="col-12">
+                     <?php if (Yii::$app->session->hasFlash('success')): ?>
+                         <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                             <?php echo Yii::$app->session->getFlash('success'); ?>
+                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                             </button>
+                         </div>
+                     <?php endif; ?>
+                 </div>
+             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
                 <div class="heading heading-2 mb-80 text--center">
                     <h2 class="heading--title">Записатись Онлайн</h2>
@@ -48,9 +48,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= $form->field($book, 'name', [
                         'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\">{input}</div>",
                     ])->textInput([
-                        'type' => 'name',
+                            'type' => 'text',
                         'class' => 'form-control',
-                        'name' => 'contact-name',
+                        'name' => 'name',
                         'id' => 'name',
                         'placeholder' => 'Введіть ім\'я',
                     ]) ?>
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ])->textInput([
                         'type' => 'email',
                         'class' => 'form-control',
-                        'name' => 'contact-email',
+                        'name' => 'email',
                         'id' => 'email',
                         'placeholder' => 'Введіть електронну адресу',
                     ]) ?>
@@ -69,9 +69,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= $form->field($book, 'phone', [
                         'template' => "<div class=\"col-md-4\">{input}</div>",
                     ])->textInput([
-                        'type' => 'phone',
+                        'type' => 'text',
                         'class' => 'form-control',
-                        'name' => 'contact-phone',
+                        'name' => 'phone',
                         'id' => 'phone',
                         'placeholder' => 'Введіть телефон',
                     ]) ?>
@@ -87,7 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         '4' => 'Чоловіча стрижка + борода',
                     ],[
                             'class' => 'form-control',
-                        'name'=> 'services',
+                        'name'=> 'service',
                         'prompt'=>'Виберіть послугу'
                     ],) ?>
 
@@ -97,7 +97,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ])->textInput([
                         'type' => 'datetime-local',
                         'class' => 'form-control',
-                        'name' => 'contact-date',
+                        'name' => 'date',
                         'id' => 'date',
 
                     ]) ?>
@@ -106,7 +106,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'template' => "<div class=\"col-xs-12 col-sm-12 col-md-12\">{input}</div>",
                     ])->textarea([
                         'class' => 'form-control',
-                        'name' => 'contact-message',
+                        'name' => 'desires',
                         'id' => 'message',
                         'rows' => 3,
                         'placeholder' => 'Додайте свої побажання',
@@ -114,7 +114,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        <?= Html::submitButton('Записатись', ['class' => 'btn btn--secondary btn--rounded', 'name' => 'submit']) ?>
+                        <?= Html::submitButton(
+                            'Записатись', [
+                                'class' => 'btn btn--secondary btn--rounded'
+                            ]
+                        )?>
                     </div>
 
 

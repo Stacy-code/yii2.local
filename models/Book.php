@@ -5,10 +5,8 @@ namespace app\models;
 
 
 use Yii;
-use yii\base\Exception;
 use yii\db\ActiveRecord;
-use yii\db\mssql\PDO;
-use yii\web\IdentityInterface;
+
 
 /**
  * Class Book
@@ -27,9 +25,12 @@ use yii\web\IdentityInterface;
  *
  *
  */
-class Book extends ActiveRecord implements IdentityInterface
+class Book extends ActiveRecord
 {
-
+    /**
+     * @var bool|self $_book
+     */
+    public $_book = false;
 
     /**
      * @return string
@@ -52,6 +53,15 @@ class Book extends ActiveRecord implements IdentityInterface
             [['status'], 'default', 'value' => 'new'],
             [['email', 'name', 'phone', 'date', 'service'], 'required'],
         ];
+    }
+
+    /**
+     * @return array
+     */
+    public function scenarios(): array
+    {
+        $scenario['default'] = ['id' ,'email', 'name', 'phone', 'service','date','desires', 'status',  'created_at'];
+        return $scenario;
     }
 
     /**
@@ -119,26 +129,26 @@ class Book extends ActiveRecord implements IdentityInterface
 
     /**
      * @param string $email
-     * @return User|null
+     * @return Book|null
      */
-    // public static function findByUserEmail(string $email)
-    // {
-    //      return static::findOne(['email' => $email]);
-    //  }
+     public static function findByBookEmail(string $email)
+     {
+          return static::findOne(['email' => $email]);
+      }
 
     /**
      * @return $this|boolean
      */
-    //  public function getUser()
-    //  {
+      public function getBook()
+      {
 
-    //      if ($this->_user === false) {
-    //         $this->_user = self::findByUserEmail($this->email);
-    //      }
+          if ($this->_book === false) {
+             $this->_book = self::findByBookEmail($this->email);
+          }
 
-    //    return $this->_user;
+        return $this->_book;
 
-    //  }
+      }
     /**
      * @return bool
      */
@@ -146,6 +156,7 @@ class Book extends ActiveRecord implements IdentityInterface
     {
 
         if ($this->validate()) {
+
             return true;
         }
         Yii::$app->session->setFlash('error', 'Не правильно вказані дані!');
