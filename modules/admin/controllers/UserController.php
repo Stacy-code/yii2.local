@@ -9,6 +9,7 @@ use app\controllers\AppController;
 use app\modules\admin\assets\UserAsset;
 use app\services\user\UserService;
 use Yii;
+use yii\base\BaseObject;
 use yii\data\ActiveDataProvider;
 use yii\db\Exception;
 use yii\db\StaleObjectException;
@@ -56,10 +57,13 @@ class UserController extends AppController
      */
     public function actionCreate()
     {
+
         $user = new User();
 
-        if($user->load(Yii::$app->request->post()) && $user->save()){
-            Yii::$app->session->setFlash('success' , "Запис cтворено!");
+        if (Yii::$app->request->isPost) {
+
+            $this->service->create(Yii::$app->request->post());
+            Yii::$app->session->setFlash('success' , "Запис додано!");
             return Yii::$app->response->redirect(Url::toRoute(['/admin/user/index']), 301);
         }
         return $this->render('create',[
@@ -73,13 +77,17 @@ class UserController extends AppController
      */
     public function actionUpdate(int $id)
     {
+
         $user = User::findOne($id);
-        if($user->load(Yii::$app->request->post()) && $user->save()){
+
+        if (Yii::$app->request->isPost) {
+
+            $this->service->update($user,Yii::$app->request->post());
             Yii::$app->session->setFlash('success' , "Запис відновлено!");
-                 return Yii::$app->response->redirect(Url::toRoute(['/admin/user/index']), 301);
+            return Yii::$app->response->redirect(Url::toRoute(['/admin/user/index']), 301);
         }
         return $this->render('update',[
-            'user' => $user
+                'user' => $user
             ]
         );
     }

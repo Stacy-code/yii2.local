@@ -50,12 +50,38 @@ class UserRepository extends AbstractRepository
 
     public function processUpdate(): array
     {
-        $result = [
-            'success' => false,
-        ];
+
+        $result = ['success' => false];
         try {
-            $result['success'] = true;
-            $this->entityModel->update();
+
+            $this->entityModel->load($this->dataPost);
+            if ($this->entityModel->validate()) {
+
+                $result['success'] = true;
+                $this->entityModel->save();
+
+            }
+
+
+        } catch (\Exception $e) {
+            $result['success'] = false;
+        }
+        return $result;
+    }
+
+    public function processSave(): array
+    {
+
+        $result = ['success' => false];
+        try {
+            $this->entityModel->load($this->dataPost);
+            if ($this->entityModel->validate()) {
+
+                $result['success'] = true;
+                $this->entityModel->save();
+
+            }
+
 
         } catch (\Exception $e) {
             $result['success'] = false;

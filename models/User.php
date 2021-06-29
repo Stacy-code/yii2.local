@@ -118,6 +118,7 @@ class User extends ActiveRecord implements IdentityInterface
         $scenario[self::REGISTER_SCENARIO] = [
             'email', 'name', 'password', 'passwordConfirm', 'active'
         ];
+        $scenario['default'] = ['id' ,'email', 'name', 'password', 'passwordConfirm','auth_key','reset_key', 'active',  'created_at' ,'updated_at'];
         return $scenario;
     }
 

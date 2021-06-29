@@ -72,7 +72,7 @@ abstract class AbstractRepository implements RepositoryInterface
         $this->dataPost = $data;
         $this->entityModel = $model;
         $this->processType = __FUNCTION__;
-        return $this->processSave();
+        return $this->processUpdate();
     }
 
     /**
