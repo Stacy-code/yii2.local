@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 $this->title = 'Home';
 $this->params['breadcrumbs'][] = $this->title;
@@ -313,46 +314,93 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <!-- Testimonial #2
         ============================================= -->
-        <section id="testimonial2" class="testimonial testimonial-2 bg-overlay bg-overlay-dark bg-parallax text-center">
+        <section id="testimonial2" class="testimonial testimonial-1 bg-overlay bg-overlay-dark bg-parallax text-center">
             <div class="bg-section">
-                <img src="http://demo.zytheme.com/hairy/assets/images/background/8.jpg" alt="Background" />
+                <img src="http://demo.zytheme.com/hairy/assets/images/testimonial/bg-1.jpg" alt="Background" />
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
-                        <div id="testimonial-carousel" class="carousel carousel-dots carousel-white" data-slide="1" data-slide-rs="1" data-autoplay="false" data-nav="false" data-dots="true" data-space="30" data-loop="true" data-speed="800">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+                        <div class="text--center heading mb-70">
+                            <h2 class="heading--title color-white">Clients Say</h2>
+                            <p class="heading--desc mb-0 color-gray">Duis aute irure dolor in reprehenderit volupte velit esse cillum dolore eu fugiat pariatursint occaecat cupidatat non proident culpa.</p>
+                            <div class="divider--line divider--center"></div>
+                        </div>
+                    </div>
+                    <!-- .col-md-8 end -->
+                </div>
+                <!-- .row end -->
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div id="testimonial-carousel" class="carousel carousel-dots carousel-white" data-slide="3" data-slide-rs="1" data-autoplay="false" data-nav="false" data-dots="true" data-space="30" data-loop="true" data-speed="800">
                             <!-- Testimonial #1 -->
                             <div class="testimonial-panel">
+                                <div class="testimonial--meta">
+                                    <div class="testimonial--meta-img">
+                                        <img src="http://demo.zytheme.com/hairy/assets/images/testimonial/1.png" alt="Testimonial Author">
+                                    </div>
+                                </div>
+                                <!-- .testimonial-meta end -->
                                 <div class="testimonial--body">
-                                    <p>“ It’s just brilliant. I will recommend Hairy to everyone I know! I’m really glad to these guys got Hairy out there. I’ve bought it now I think perhaps I should have invested. ”</p>
+                                    <p>“Proin gravida nibh vel velit auctor aliquet aenean sollidin, lorem quis bibendum auctor nisi elit.”</p>
                                 </div>
                                 <!-- .testimonial-body end -->
                                 <div class="testimonial--meta-content">
-                                    <h4>– Steve Martin</h4>
+                                    <h4>Ryan Printz</h4>
                                 </div>
                             </div>
                             <!-- .testimonial-panel end -->
 
                             <!-- Testimonial #2 -->
                             <div class="testimonial-panel">
+                                <div class="testimonial--meta">
+                                    <div class="testimonial--meta-img">
+                                        <img src="http://demo.zytheme.com/hairy/assets/images/testimonial/2.png" alt="Testimonial Author">
+                                    </div>
+                                </div>
+                                <!-- .testimonial-meta end -->
                                 <div class="testimonial--body">
                                     <p>“Proin gravida nibh vel velit auctor aliquet aenean sollidin, lorem quis bibendum auctor nisi elit.”</p>
                                 </div>
                                 <!-- .testimonial-body end -->
                                 <div class="testimonial--meta-content">
-                                    <h4>– Ryan Printz</h4>
+                                    <h4>Mark Smith</h4>
                                 </div>
                             </div>
                             <!-- .testimonial-panel end -->
 
                             <!-- Testimonial #3 -->
                             <div class="testimonial-panel">
+                                <div class="testimonial--meta">
+                                    <div class="testimonial--meta-img">
+                                        <img src="http://demo.zytheme.com/hairy/assets/images/testimonial/3.png" alt="Testimonial Author">
+                                    </div>
+                                </div>
+                                <!-- .testimonial-meta end -->
                                 <div class="testimonial--body">
                                     <p>“Proin gravida nibh vel velit auctor aliquet aenean sollidin, lorem quis bibendum auctor nisi elit.”</p>
                                 </div>
                                 <!-- .testimonial-body end -->
                                 <div class="testimonial--meta-content">
-                                    <h4>- Steve Martin</h4>
+                                    <h4>Steve Martin</h4>
+                                </div>
+                            </div>
+                            <!-- .testimonial-panel end -->
+
+                            <!-- Testimonial #4 -->
+                            <div class="testimonial-panel">
+                                <div class="testimonial--meta">
+                                    <div class="testimonial--meta-img">
+                                        <img src="http://demo.zytheme.com/hairy/assets/images/testimonial/2.png" alt="Testimonial Author">
+                                    </div>
+                                </div>
+                                <!-- .testimonial-meta end -->
+                                <div class="testimonial--body">
+                                    <p>“Proin gravida nibh vel velit auctor aliquet aenean sollidin, lorem quis bibendum auctor nisi elit.”</p>
+                                </div>
+                                <!-- .testimonial-body end -->
+                                <div class="testimonial--meta-content">
+                                    <h4>Smith Printz</h4>
                                 </div>
                             </div>
                             <!-- .testimonial-panel end -->
@@ -367,146 +415,73 @@ $this->params['breadcrumbs'][] = $this->title;
         </section>
         <!-- #testimonial2 end -->
 
-        <!-- Shop #4
-        ============================================= -->
-        <section id="shop" class="shop shop-4">
+        <!-- Callback-form
+       ============================================= -->
+        <section id="contact1" class="forms">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
-                        <div class="text--center heading heading-2 mb-70">
-                            <h2 class="heading--title">Professional Care</h2>
-                            <p class="heading--desc mb-0">Duis aute irure dolor in reprehenderit volupte velit esse cillum dolore eu fugiat pariatursint occaecat cupidatat non proident culpa.</p>
-                            <div class="divider--line divider--center"></div>
+
+                        <div class="contact-form">
+                            <?php $form = ActiveForm::begin([
+                                'fieldConfig' => [
+                                    'labelOptions' => ['class' => 'mb-0'],
+                                ],
+                            ]); ?>
+
+                                <div class="row">
+
+                                    <?= $form->field($callback, 'name', [
+                                        'template' => "<div class=\"col-md-12\">{input}</div>",
+                                    ])->textInput([
+                                        'type' => 'text',
+                                        'class' => 'form-control',
+                                        'placeholder' => 'Введіть ім\'я',
+                                    ]) ?>
+
+                                    <?= $form->field($callback, 'email', [
+                                        'template' => "<div class=\"col-md-6\">{input}</div>",
+                                    ])->textInput([
+                                        'type' => 'email',
+                                        'class' => 'form-control',
+                                        'placeholder' => 'Введіть електронну адресу',
+                                    ]) ?>
+
+                                    <?= $form->field($callback, 'phone', [
+                                        'template' => "<div class=\"col-md-6\">{input}</div>",
+                                    ])->textInput([
+                                        'type' => 'text',
+                                        'class' => 'form-control',
+                                        'placeholder' => 'Введіть телефон',
+                                    ]) ?>
+
+                                    <?= $form->field($callback, 'message', [
+                                        'template' => "<div class=\"col-md-12\">{input}</div>",
+                                    ])->textarea([
+                                        'class' => 'form-control',
+                                        'rows' => 3,
+                                        'placeholder' => 'Залиште свій відгук',
+                                    ]) ?>
+
+                                    <div class="col-md-12">
+                                        <?= Html::submitButton(
+                                            'Записатись', [
+                                                'class' => 'btn btn--secondary btn--rounded btn--block'
+                                            ]
+                                        )?>
+                                    </div>
+
+                                </div>
+
+                            <?php $form = ActiveForm::end(); ?>
                         </div>
                     </div>
                     <!-- .col-md-6 end -->
                 </div>
-                <!-- .row end -->
-                <div class="row">
-                    <!-- Product #1 -->
-                    <div class="col-xs-12 col-sm-6 col-md-3 product-item">
-                        <div class="product--img">
-                            <img src="http://demo.zytheme.com/hairy/assets/images/shop/grid/1.jpg" alt="Product" />
-                            <div class="product--hover">
-                                <div class="product--action">
-                                    <a href="#">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!-- .product-overlay end -->
-                        </div>
-                        <!-- .product-img end -->
-                        <div class="product--content">
-                            <div class="product--title">
-                                <h3><a href="#">Sharp Shear</a></h3>
-                            </div>
-                            <!-- .product-title end -->
-                            <div class="product--price">
-                                <span>$35.00</span>
-                            </div>
-                            <!-- .product-price end -->
-                        </div>
-                        <!-- .product-bio end -->
-                    </div>
-                    <!-- .product end -->
-
-                    <!-- Product #2 -->
-                    <div class="col-xs-12 col-sm-6 col-md-3 product-item">
-                        <div class="product--img">
-                            <img src="http://demo.zytheme.com/hairy/assets/images/shop/grid/2.jpg" alt="Product" />
-                            <div class="product--hover">
-                                <div class="product--action">
-                                    <a href="#">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!-- .product-overlay end -->
-                        </div>
-                        <!-- .product-img end -->
-                        <div class="product--content">
-                            <div class="product--title">
-                                <h3><a href="#">Flat Comb</a></h3>
-                            </div>
-                            <!-- .product-title end -->
-                            <div class="product--price">
-                                <span>$5.00</span>
-                            </div>
-                            <!-- .product-price end -->
-                        </div>
-                        <!-- .product-bio end -->
-                    </div>
-                    <!-- .product end -->
-
-                    <!-- Product #3 -->
-                    <div class="col-xs-12 col-sm-6 col-md-3 product-item">
-                        <div class="product--img">
-                            <img src="http://demo.zytheme.com/hairy/assets/images/shop/grid/3.jpg" alt="Product" />
-                            <div class="product--hover">
-                                <div class="product--action">
-                                    <a href="#">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!-- .product-overlay end -->
-                        </div>
-                        <!-- .product-img end -->
-                        <div class="product--content">
-                            <div class="product--title">
-                                <h3><a href="#">Fade Clipper</a></h3>
-                            </div>
-                            <!-- .product-title end -->
-                            <div class="product--price">
-                                <span>$105.00</span>
-                            </div>
-                            <!-- .product-price end -->
-                        </div>
-                        <!-- .product-bio end -->
-                    </div>
-                    <!-- .product end -->
-
-                    <!-- Product #4 -->
-                    <div class="col-xs-12 col-sm-6 col-md-3 product-item">
-                        <div class="product--img">
-                            <img src="http://demo.zytheme.com/hairy/assets/images/shop/grid/4.jpg" alt="Product" />
-                            <div class="product--hover">
-                                <div class="product--action">
-                                    <a href="#">Add To Cart</a>
-                                </div>
-                            </div>
-                            <!-- .product-overlay end -->
-                        </div>
-                        <!-- .product-img end -->
-                        <div class="product--content">
-                            <div class="product--title">
-                                <h3><a href="#">Gel Cream</a></h3>
-                            </div>
-                            <!-- .product-title end -->
-                            <div class="product--price">
-                                <span>$7.5</span>
-                            </div>
-                            <!-- .product-price end -->
-                        </div>
-                        <!-- .product-bio end -->
-                    </div>
-                    <!-- .product end -->
-
-                </div>
-                <!-- .row end -->
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 clearfix mt-30 text--center">
-                        <a href="#" class="btn btn--secondary btn--bordered btn--rounded">View All</a>
-                    </div>
-                    <!-- .col-md-12 end -->
-                </div>
-                <!-- .row end -->
             </div>
-            <!-- .container end -->
         </section>
-        <!-- #shop end -->
-
-        <!-- Footer #5
-        ============================================= -->
+        <!-- Callback-form end -->
 
     </div>
-
-
-    <code><?= __FILE__ ?></code>
 </div>
 

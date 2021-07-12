@@ -27,7 +27,7 @@ class HomeAsset extends BaseAssetBundle
      * Підключаємо скріпти
      */
     public $js = [
-        'js/plugins.js', 'js/functions.js'
+        'js/jquery-2.2.4.min.js', 'js/plugins.js', 'js/functions.js',
     ];
 
     /**
@@ -35,7 +35,7 @@ class HomeAsset extends BaseAssetBundle
      * Залежності і jquery
      */
     public $depends = [
-        JqueryAsset::class
+        //JqueryAsset::class
     ];
 
 

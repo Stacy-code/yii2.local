@@ -161,7 +161,7 @@ use \yii\helpers\Url;
                 <li class="menu-title">Меню</li>
 
                 <li>
-                    <a href="" class="">
+                    <a  href="<?= Url::to('/admin/book/index')?>" class="">
                         <i class="ri-table-2"></i>
                         <span>Список записей</span>
                     </a>
