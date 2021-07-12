@@ -5,6 +5,8 @@ namespace app\repositories\book;
 
 use app\models\Book;
 use app\repositories\AbstractRepository;
+use Yii;
+use yii\db\Transaction;
 
 /**
  * Class UserRepository
@@ -50,15 +52,26 @@ class BookRepository extends AbstractRepository
 
     public function processUpdate(): array
     {
-        $result = [
-            'success' => false,
-        ];
-        try {
-            $result['success'] = true;
-            $this->entityModel->update();
 
-        } catch (\Exception $e) {
-            $result['success'] = false;
+        $result = ['success' => false];
+        $this->entityModel->load($this->dataPost);
+        if ($this->entityModel->validate()) {
+            /**
+             * @var Transaction $transaction
+             */
+            $transaction = Yii::$app->db->beginTransaction();
+            try {
+
+                $result['success'] = true;
+                $this->entityModel->save();
+                $transaction->commit();
+
+            } catch (\Exception $e) {
+                $transaction->rollBack();
+                $result['success'] = false;
+            }
+        }else{
+            $result['errors'] = $this->entityModel->getErrors();
         }
         return $result;
     }
@@ -68,18 +81,24 @@ class BookRepository extends AbstractRepository
     {
 
         $result = ['success' => false];
-        try {
-            $this->entityModel->load($this->dataPost);
-
-            if ($this->entityModel->validate()) {
+        $this->entityModel->load($this->dataPost);
+        if ($this->entityModel->validate()) {
+            /**
+             * @var Transaction $transaction
+             */
+            $transaction = Yii::$app->db->beginTransaction();
+            try {
 
                 $result['success'] = true;
                 $this->entityModel->save();
+                $transaction->commit();
 
+            } catch (\Exception $e) {
+                $transaction->rollBack();
+                $result['success'] = false;
             }
-
-        } catch (\Exception $e) {
-            $result['success'] = false;
+        }else{
+            $result['errors'] = $this->entityModel->getErrors();
         }
 
         return $result;

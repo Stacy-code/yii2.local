@@ -6,6 +6,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\datetime\DateTimePicker;
+
 
 $this->title = 'Book';
 $this->params['breadcrumbs'][] = $this->title;
@@ -50,8 +52,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     ])->textInput([
                             'type' => 'text',
                         'class' => 'form-control',
-                        'name' => 'name',
-                        'id' => 'name',
                         'placeholder' => 'Введіть ім\'я',
                     ]) ?>
 
@@ -61,8 +61,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     ])->textInput([
                         'type' => 'email',
                         'class' => 'form-control',
-                        'name' => 'email',
-                        'id' => 'email',
                         'placeholder' => 'Введіть електронну адресу',
                     ]) ?>
 
@@ -71,8 +69,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     ])->textInput([
                         'type' => 'text',
                         'class' => 'form-control',
-                        'name' => 'phone',
-                        'id' => 'phone',
                         'placeholder' => 'Введіть телефон',
                     ]) ?>
 
@@ -80,14 +76,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= $form->field($book, 'service', [
                         'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\"><div class=\"form-select\">{input}</div></div>",
                     ])->dropDownList([
-                        '0' => 'Чоловіча стрижка',
-                        '1' => 'Стрижка бороди',
-                        '2' => 'Стрижка вусів',
-                        '3' => 'Королівське гоління',
-                        '4' => 'Чоловіча стрижка + борода',
+                        'Чоловіча стрижка' => 'Чоловіча стрижка',
+                        'Стрижка бороди' => 'Стрижка бороди',
+                        'Стрижка вусів' => 'Стрижка вусів',
+                        'Королівське гоління' => 'Королівське гоління',
+                        'Чоловіча стрижка + борода' => 'Чоловіча стрижка + борода',
                     ],[
                             'class' => 'form-control',
-                        'name'=> 'service',
                         'prompt'=>'Виберіть послугу'
                     ],) ?>
 
@@ -97,8 +92,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     ])->textInput([
                         'type' => 'datetime-local',
                         'class' => 'form-control',
-                        'name' => 'date',
-                        'id' => 'date',
 
                     ]) ?>
 
@@ -106,8 +99,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         'template' => "<div class=\"col-xs-12 col-sm-12 col-md-12\">{input}</div>",
                     ])->textarea([
                         'class' => 'form-control',
-                        'name' => 'desires',
-                        'id' => 'message',
                         'rows' => 3,
                         'placeholder' => 'Додайте свої побажання',
                     ]) ?>
