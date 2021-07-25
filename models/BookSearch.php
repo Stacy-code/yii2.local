@@ -17,8 +17,8 @@ class BookSearch extends Book implements SearchInterface
         $query = self::find();
         $this->load($params);
 
-        //$query->filterWhere(['id' => $this->id]);
-        //$query->filterWhere(['like', '']);
+        $query->filterWhere(['id' => $this->id] );
+        $query->andFilterWhere(['like'  , 'name', $this->name]);
         return $query;
     }
 }

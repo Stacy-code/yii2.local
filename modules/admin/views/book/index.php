@@ -52,6 +52,18 @@ use app\modules\admin\widgets\FilterTable\FilterTableWidget;
                 <?= FilterTableWidget::widget([
                     'service' => $this->context->service,
 
+                    'fields' => [
+                            [
+                                    'type' => 'text',
+                                    'attribute'  => 'id',
+                                'col' => 'col-md-1',
+                            ],
+                        [
+                            'type' => 'text',
+                            'attribute'  => 'name',
+                            'col' => 'col-md-2',
+                        ]
+                    ]
                 ])?>
 
                 <div class="row">

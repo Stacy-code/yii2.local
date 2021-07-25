@@ -42,7 +42,7 @@ class FilterTableWidget extends Widget
     public function run()
     {
         return $this->render('search', [
-            'model' => $this->searchModel,
+            'searchModel' => $this->searchModel,
             'fields' => $this->fields
         ]);
     }
@@ -54,6 +54,7 @@ class FilterTableWidget extends Widget
     {
         if (!$this->searchModel instanceof SearchInterface && $this->service instanceof CoreService) {
             $this->searchModel = new $this->service::$searchClass();
+            $this->searchModel->load(Yii::$app->request->get());
         } else {
             throw new InvalidConfigException('You must set search model');
         }
