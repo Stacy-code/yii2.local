@@ -8,6 +8,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use app\models\Book;
 use yii\helpers\Url;
+use app\modules\admin\widgets\FilterTable\FilterTableWidget;
 
 ?>
 
@@ -47,7 +48,14 @@ use yii\helpers\Url;
                            href="<?=Url::to(['book/create'])?>">Створити</a>
                     </div>
                 </div>
+
+                <?= FilterTableWidget::widget([
+                    'service' => $this->context->service,
+
+                ])?>
+
                 <div class="row">
+
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">

@@ -176,7 +176,7 @@ use \yii\helpers\Url;
                 </li>
 
                 <li>
-                    <a href="calendar.html" class=" waves-effect">
+                    <a href="<?= Url::to('/admin/calendar/index')?>" class=" waves-effect">
                         <i class="ri-calendar-2-line"></i>
                         <span>Календарь</span>
                     </a>
