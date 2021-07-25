@@ -42,7 +42,7 @@ use yii\helpers\Url;
                                 </div>
 
                                 <?= $form->field($book, 'service', [
-                                    'template' => "<div class=\"form-group row\"><div class=\"col-md-10\">{input}</div></div>",
+                                    'template' => "<div class=\"form-group row\"><div class=\"col-md-10\">{label}{input}{error}</div></div>",
                                 ])->dropDownList([
                                     'Чоловіча стрижка' => 'Чоловіча стрижка',
                                     'Стрижка бороди' => 'Стрижка бороди',
@@ -55,7 +55,7 @@ use yii\helpers\Url;
                                 ],) ?>
 
                                 <?= $form->field($book, 'date', [
-                                    'template' => "<div class=\"form-group row\"><div class=\"col-md-10\">{input}</div></div>",
+                                    'template' => "<div class=\"form-group row\"><div class=\"col-md-10\">{label}{input}{error}</div></div>",
                                 ])->textInput([
                                     'type' => 'datetime-local',
                                     'class' => 'form-control',
@@ -68,6 +68,18 @@ use yii\helpers\Url;
                                     </div>
                                 </div>
 
+                                <?= $form->field($book, 'status', [
+                                    'template' => "<div class=\"form-group row\"><div class=\"col-md-10\">{label}{input}{error}</div></div>",
+                                ])->dropDownList([
+                                    'new' => 'new',
+                                    'in progress' => 'in progress',
+                                    'done' => 'done',
+                                    'failed' => 'failed',
+
+                                ],[
+                                    'class' => 'form-control',
+                                    'prompt'=>'Виберіть статус'
+                                ],) ?>
 
                                 <div class="form-group row">
                                     <div class="col-md-10">

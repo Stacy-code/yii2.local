@@ -55,6 +55,7 @@ class BookRepository extends AbstractRepository
 
         $result = ['success' => false];
         $this->entityModel->load($this->dataPost);
+
         if ($this->entityModel->validate()) {
             /**
              * @var Transaction $transaction
@@ -73,6 +74,7 @@ class BookRepository extends AbstractRepository
         }else{
             $result['errors'] = $this->entityModel->getErrors();
         }
+
         return $result;
     }
 

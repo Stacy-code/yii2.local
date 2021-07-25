@@ -4,6 +4,7 @@
 
 /* @var $book app\models\Book */
 
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\datetime\DateTimePicker;
@@ -15,19 +16,25 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <section id="booking" class="booking bg-white">
     <div class="container">
-         <div class="row clearfix">
-             <div class="row">
-                 <div class="col-12">
-                     <?php if (Yii::$app->session->hasFlash('success')): ?>
-                         <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                             <?php echo Yii::$app->session->getFlash('success'); ?>
-                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                 <span aria-hidden="true">&times;</span>
-                             </button>
-                         </div>
-                     <?php endif; ?>
-                 </div>
-             </div>
+        <div class="row clearfix">
+            <div class="row">
+                <div class="col-12">
+                    <?php if (Yii::$app->session->hasFlash('success')): ?>
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <?php echo Yii::$app->session->getFlash('success'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (Yii::$app->session->hasFlash('error')): ?>
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <?php echo Yii::$app->session->getFlash('error'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
                 <div class="heading heading-2 mb-80 text--center">
                     <h2 class="heading--title">Записатись Онлайн</h2>
@@ -38,6 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <!-- .col-md-6 end -->
         </div>
+
         <!-- .row end -->
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
@@ -50,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= $form->field($book, 'name', [
                         'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\">{input}</div>",
                     ])->textInput([
-                            'type' => 'text',
+                        'type' => 'text',
                         'class' => 'form-control',
                         'placeholder' => 'Введіть ім\'я',
                     ]) ?>
@@ -81,19 +89,29 @@ $this->params['breadcrumbs'][] = $this->title;
                         'Стрижка вусів' => 'Стрижка вусів',
                         'Королівське гоління' => 'Королівське гоління',
                         'Чоловіча стрижка + борода' => 'Чоловіча стрижка + борода',
-                    ],[
-                            'class' => 'form-control',
-                        'prompt'=>'Виберіть послугу'
+                    ], [
+                        'class' => 'form-control',
+                        'prompt' => 'Виберіть послугу'
                     ],) ?>
 
-
-                    <?= $form->field($book, 'date', [
+                    <?=$form->field($book, 'date', [
                         'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\">{input}</div>",
-                    ])->textInput([
-                        'type' => 'datetime-local',
-                        'class' => 'form-control',
+                    ])->widget(
+                        DateTimePicker::class,
+                        [
+                            'size'=>'md',
+                            'type' => DateTimePicker::TYPE_COMPONENT_PREPEND,
+                            'convertFormat' => true,
+                            'pluginOptions' => [
+                                'todayHighlight' => true,
+                                'todayBtn' => true,
+                                'format' => 'dd-M-yyyy H:i',
+                                'autoclose' => true,
+                                'startDate'=> date('d-m-Y H:i', strtotime(time())),
+                            ],
+                        ])->label(''); ?>
 
-                    ]) ?>
+
 
                     <?= $form->field($book, 'desires', [
                         'template' => "<div class=\"col-xs-12 col-sm-12 col-md-12\">{input}</div>",
@@ -109,7 +127,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'Записатись', [
                                 'class' => 'btn btn--secondary btn--rounded'
                             ]
-                        )?>
+                        ) ?>
                     </div>
 
 

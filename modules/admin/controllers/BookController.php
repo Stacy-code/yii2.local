@@ -73,12 +73,11 @@ class BookController extends AppController
      */
     public function actionUpdate(int $id)
     {
-
         $book = Book::findOne($id);
 
         if (Yii::$app->request->isPost) {
 
-            $this->service->update($book,Yii::$app->request->post());
+            $this->service->update($book , Yii::$app->request->post());
             Yii::$app->session->setFlash('success' , "Запис відновлено!");
             return Yii::$app->response->redirect(Url::toRoute(['/admin/book/index']), 301);
         }

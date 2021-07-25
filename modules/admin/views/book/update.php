@@ -43,26 +43,27 @@ use yii\helpers\Url;
 
 
 
+
                                 <?= $form->field($book, 'service', [
-                                    'template' => "<div class=\"form-group row\"><div class=\"col-md-10\">{input}</div></div>",
-                                ])->textInput(['value' => $book->service])->dropDownList([
-                                    '0' => 'Чоловіча стрижка',
-                                    '1' => 'Стрижка бороди',
-                                    '2' => 'Стрижка вусів',
-                                    '3' => 'Королівське гоління',
-                                    '4' => 'Чоловіча стрижка + борода',
+                                    'template' => "<div class=\"form-group row\"><div class=\"col-md-10\">{label}{input}{error}</div></div>",
+                                ])->dropDownList([
+                                    'Чоловіча стрижка' => 'Чоловіча стрижка',
+                                    'Стрижка бороди' => 'Стрижка бороди',
+                                    'Стрижка вусів' => 'Стрижка вусів',
+                                    'Королівське гоління' => 'Королівське гоління',
+                                    'Чоловіча стрижка + борода' => 'Чоловіча стрижка + борода',
                                 ],[
                                     'class' => 'form-control',
                                     'prompt'=>'Виберіть послугу'
-                                ],)?>
+                                ],) ?>
 
                                 <?= $form->field($book, 'date', [
-                                    'template' => "<div class=\"form-group row\"><div class=\"col-md-10\">{input}</div></div>",
+                                    'template' => "<div class=\"form-group row\"><div class=\"col-md-10\">{label}{input}{error}</div></div>",
                                 ])->textInput([
                                     'type' => 'datetime-local',
                                     'class' => 'form-control',
 
-                                ]) ?>
+                                ])?>
 
                                 <div class="form-group row">
                                     <div class="col-md-10">
@@ -70,6 +71,18 @@ use yii\helpers\Url;
                                     </div>
                                 </div>
 
+                                <?= $form->field($book, 'status', [
+                                    'template' => "<div class=\"form-group row\"><div class=\"col-md-10\">{label}{input}{error}</div></div>",
+                                ])->dropDownList([
+                                    'new' => 'new',
+                                    'in progress' => 'in progress',
+                                    'done' => 'done',
+                                    'failed' => 'failed',
+
+                                ],[
+                                    'class' => 'form-control',
+                                    'prompt'=>'Виберіть статус'
+                                ],) ?>
 
                                 <div class="form-group row">
                                     <div class="col-md-10">
