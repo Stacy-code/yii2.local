@@ -4,7 +4,10 @@
 namespace app\assets;
 
 
+use yii\bootstrap\BootstrapAsset;
+use yii\bootstrap\BootstrapPluginAsset;
 use yii\web\JqueryAsset;
+use yii\web\YiiAsset;
 
 class HomeAsset extends BaseAssetBundle
 {
@@ -19,7 +22,9 @@ class HomeAsset extends BaseAssetBundle
      */
     public $css = [
         'https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900%7COpen+Sans:300,300i,400,400i,600,600i,700,700i,800,800i',
-        'css/external.css', 'css/bootstrap.min.css', 'css/style.css'
+        'css/external.css',
+        'css/bootstrap.min.css',
+        'css/style.css'
     ];
 
     /**
@@ -27,7 +32,10 @@ class HomeAsset extends BaseAssetBundle
      * Підключаємо скріпти
      */
     public $js = [
-        'js/jquery-2.2.4.min.js', 'js/plugins.js', 'js/functions.js',
+        'js/plugins/bootstrap.js',
+        'js/plugins.js',
+        'js/functions.js'
+
     ];
 
     /**
@@ -35,7 +43,10 @@ class HomeAsset extends BaseAssetBundle
      * Залежності і jquery
      */
     public $depends = [
-        //JqueryAsset::class
+        YiiAsset::class,
+        JqueryAsset::class,
+
+
     ];
 
 

@@ -3,11 +3,13 @@
 namespace app\controllers;
 
 use app\services\book\BookService;
+use app\services\callback\CallbackService;
 use Yii;
 use yii\base\Module as BaseModule;
 use yii\helpers\Url;
 use yii\web\ErrorAction;
 use app\models\Book;
+use app\models\Callback;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
@@ -25,6 +27,11 @@ class SiteController extends AppController
     public $book;
 
     /**
+     * @var Callback $callback
+     */
+    public $callback;
+
+    /**
      * @var string $layout
      */
     public $layout = 'default';
@@ -34,23 +41,31 @@ class SiteController extends AppController
      */
     public $service;
 
+    /**
+     * @var CallbackService
+     */
+    public $serviceCallback;
+
 
     /**
      * UserController constructor.
      * @param $id
      * @param $module
      * @param BookService $service
+     * @param CallbackService $serviceCallback
      * @param array $config
      */
     public function __construct(
         $id,
         BaseModule $module,
         BookService $service,
+        CallbackService $serviceCallback,
         $config = []
     )
     {
         parent::__construct($id, $module, $config);
         $this->service = $service;
+        $this->serviceCallback = $serviceCallback;
     }
 
 
@@ -68,12 +83,23 @@ class SiteController extends AppController
         ];
     }
 
-    /**
-     * @return string
-     */
-    public function actionIndex(): string
+
+    public function actionIndex()
     {
-        return $this->render('home');
+        if (Yii::$app->request->isPost) {
+
+            $result = $this->serviceCallback->create(Yii::$app->request->post());
+            $result['success']
+                ? Yii::$app->session->setFlash('success' , "Запис відновлено!")
+                :  Yii::$app->session->setFlash('error' , $result['msg']);
+            return Yii::$app->response->redirect(Url::toRoute(['/']), 301);
+
+
+        }
+        return $this->render('home',[
+                'callback' => new $this->serviceCallback::$modelClass,
+            ]
+        );
     }
 
     /**
@@ -89,16 +115,19 @@ class SiteController extends AppController
      */
     public function actionBook()
     {
-        $book = new Book();
 
         if (Yii::$app->request->isPost) {
 
-            $this->service->create(Yii::$app->request->post());
-            Yii::$app->session->setFlash('success' , "Запис відновлено!");
-            return Yii::$app->response->redirect(Url::toRoute(['/']), 301);
+            $result = $this->service->create(Yii::$app->request->post());
+            $result['success']
+                ? Yii::$app->session->setFlash('success' , "Запис відновлено!")
+                :  Yii::$app->session->setFlash('error' , $result['msg']);
+             return Yii::$app->response->redirect(Url::toRoute(['book']), 301);
+
+
         }
         return $this->render('book',[
-                'book' => $book
+                'book' => new $this->service::$modelClass,
             ]
         );
     }

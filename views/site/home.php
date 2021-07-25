@@ -1,10 +1,13 @@
 <?php
 
-/* @var $this yii\web\View */
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\callback\Callback;
+use yii\bootstrap4\Modal;
 
+
+/* @var $callback Callback*/
+/* @var $this yii\web\View */
 $this->title = 'Home';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -463,10 +466,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                         'placeholder' => 'Залиште свій відгук',
                                     ]) ?>
 
-                                    <div class="col-md-12">
+                                    <div  class="col-md-12">
                                         <?= Html::submitButton(
-                                            'Записатись', [
-                                                'class' => 'btn btn--secondary btn--rounded btn--block'
+                                            'Залишити відгук', [
+                                                'class' => 'btn btn--secondary btn--rounded btn--block',
                                             ]
                                         )?>
                                     </div>
@@ -484,4 +487,5 @@ $this->params['breadcrumbs'][] = $this->title;
 
     </div>
 </div>
+
 
