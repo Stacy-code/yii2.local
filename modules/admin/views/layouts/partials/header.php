@@ -196,8 +196,8 @@ use \yii\helpers\Url;
                 </li>
 
                 <li>
-                    <a href="callback.html" class=" waves-effect">
-                        <i class=""></i>
+                    <a href="<?= Url::to('/admin/callback/index')?>" class=" waves-effect">
+                        <i class="ri-table-2"></i>
                         <span>Отзывы</span>
                     </a>
                 </li>
