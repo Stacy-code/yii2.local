@@ -7985,3 +7985,6 @@ ul.comments-list ul.comment-children ul .comment-body .comment {
 .page-title .breadcrumb > li + li:before {
   color: #ffffff;
 }
+.datetimepicker {
+  position: absolute;
+}
