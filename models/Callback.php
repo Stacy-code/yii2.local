@@ -23,6 +23,12 @@ class Callback extends \yii\db\ActiveRecord
      */
     public $_callback = false;
 
+
+    /**
+     * @var int ACTIVE_CALLBACK
+     */
+    public const ACTIVE_CALLBACK = 1;
+
     /**
      * {@inheritdoc}
      */
@@ -42,9 +48,10 @@ class Callback extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function rules()
+    public function rules():array
     {
         return [
+            [['is_published'], 'default', 'value' => 0],
             [['name', 'email', 'phone', 'message'], 'required'],
             [['is_published'], 'integer'],
             [['created_at'], 'safe'],
@@ -56,7 +63,7 @@ class Callback extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
+    public function attributeLabels():array
     {
         return [
             'id' => 'ID',
@@ -102,13 +109,7 @@ class Callback extends \yii\db\ActiveRecord
         return $this->auth_key;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function validateAuthKey($authKey)
-    {
-        return $this->auth_key === $authKey;
-    }
+
 
     /**
      * @param string $email
@@ -116,7 +117,7 @@ class Callback extends \yii\db\ActiveRecord
      */
     public static function findByCallbackEmail(string $email)
     {
-        return static::findOne(['email' => $email]);
+        return static::findOne(['email' => $email, 'is_published' => self::ACTIVE_CALLBACK]);
     }
 
     /**
@@ -138,7 +139,7 @@ class Callback extends \yii\db\ActiveRecord
     public function callback(): bool
     {
 
-        if ($this->validate()) {
+        if ($this->validate()&& $this->getCallback()) {
 
             return true;
         }
