@@ -63,6 +63,30 @@ use app\modules\admin\widgets\FilterTable\FilterTableWidget;
                             'attribute'  => 'name',
                             'col' => 'col-md-2',
                         ]
+                        ,
+                        [
+                            'type' => 'text',
+                            'attribute'  => 'email',
+                            'col' => 'col-md-2',
+                        ]
+                        ,
+                        [
+                            'type' => 'text',
+                            'attribute'  => 'phone',
+                            'col' => 'col-md-2',
+                        ]
+                        ,
+                        [
+                            'type' => 'text',
+                            'attribute'  => 'service',
+                            'col' => 'col-md-2',
+                        ]
+                        ,
+                        [
+                            'type' => 'text',
+                            'attribute'  => 'status',
+                            'col' => 'col-md-1',
+                        ]
                     ]
                 ])?>
 

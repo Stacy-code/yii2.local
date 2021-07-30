@@ -19,6 +19,10 @@ class BookSearch extends Book implements SearchInterface
 
         $query->filterWhere(['id' => $this->id] );
         $query->andFilterWhere(['like'  , 'name', $this->name]);
+        $query->andFilterWhere(['like'  , 'email', $this->email]);
+        $query->andFilterWhere(['like'  , 'phone', $this->phone]);
+        $query->andFilterWhere(['like'  , 'service', $this->service]);
+        $query->andFilterWhere(['like'  , 'status', $this->status]);
         return $query;
     }
 }
