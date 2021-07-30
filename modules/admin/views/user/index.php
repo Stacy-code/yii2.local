@@ -3,6 +3,7 @@
 
 /* @var $model app\models\User */
 
+use app\modules\admin\widgets\FilterTable\FilterTableWidget;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
@@ -47,6 +48,37 @@ use yii\helpers\Url;
                            href="<?=Url::to(['user/create'])?>">Створити</a>
                     </div>
                 </div>
+
+                <?= FilterTableWidget::widget([
+                    'service' => $this->context->service,
+
+                    'fields' => [
+                        [
+                            'type' => 'text',
+                            'attribute'  => 'id',
+                            'col' => 'col-md-1',
+                        ],
+                        [
+                            'type' => 'text',
+                            'attribute'  => 'name',
+                            'col' => 'col-md-2',
+                        ]
+                        ,
+                        [
+                            'type' => 'text',
+                            'attribute'  => 'email',
+                            'col' => 'col-md-2',
+                        ]
+                        ,
+
+                        [
+                            'type' => 'text',
+                            'attribute'  => 'active',
+                            'col' => 'col-md-1',
+                        ]
+                    ]
+                ])?>
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
