@@ -1,13 +1,14 @@
 <?php
 
+use app\services\callback\CallbackService;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\Callback;
-use yii\bootstrap4\Modal;
+
 
 
 /* @var $callback Callback */
-
+/* @var $serviceCallback CallbackService*/
 /* @var $callbacks Callback */
 /* @var $this yii\web\View */
 $this->title = 'Home';
@@ -322,7 +323,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </section>
         <!-- #team4 end  -->
-
+        <?php if($serviceCallback::hasCarouselItems()): ?>
         <!-- Testimonial #2
         ============================================= -->
         <section id="testimonial2" class="testimonial testimonial-1 bg-overlay bg-overlay-dark bg-parallax text-center">
@@ -342,7 +343,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <!-- .col-md-8 end -->
                 </div>
-                <!-- .row end -->
+
+
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div id="testimonial-carousel" class="carousel carousel-dots carousel-white" data-slide="3"
@@ -350,23 +352,26 @@ $this->params['breadcrumbs'][] = $this->title;
                              data-loop="true" data-speed="800">
                             <!-- Testimonial #1 -->
 
-                            <?= $callbacks = Callback::find()->where(['is_published' => Callback::ACTIVE_CALLBACK])->all() ?>
 
-                                <?php foreach ($callback as $callbacks): ?>
 
-                            <div class="testimonial-panel">
-                                    <div class="testimonial--body">
-                                        <p><?=$callback['message']?></p>
-                                    </div>
-                                    <!-- .testimonial-body end -->
+
+                            <?php foreach ($serviceCallback::getCarouselItems() as $carouselItem): ?>
+
+                                <div class="testimonial-panel">
+
+
                                     <div class="testimonial--meta-content">
-                                        <h4><?=$callback['name']?></h4>
+                                        <h4><?= $carouselItem->name ?></h4>
                                     </div>
-                            </div>
-                                <?php endforeach; ?>
+
+                                    <div class="testimonial--body">
+                                        <p><?= $carouselItem->message ?></p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
 
 
-                                <!-- .testimonial-panel end -->
+                            <!-- .testimonial-panel end -->
 
 
                         </div>
@@ -374,14 +379,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <!-- .row end -->
                 </div>
+
+
                 <!-- .container end -->
         </section>
         <!-- #testimonial2 end -->
-
+        <?php endif;?>
         <!-- Callback-form
        ============================================= -->
         <section id="contact1" class="forms">
             <div class="container">
+
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
 
@@ -395,7 +403,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="row">
 
                                 <?= $form->field($callback, 'name', [
-                                    'template' => "<div class=\"col-md-12\">{input}</div>",
+                                    'template' => "<div class=\"col-md-12\">{input}{error}</div>",
                                 ])->textInput([
                                     'type' => 'text',
                                     'class' => 'form-control',
@@ -403,7 +411,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ]) ?>
 
                                 <?= $form->field($callback, 'email', [
-                                    'template' => "<div class=\"col-md-6\">{input}</div>",
+                                    'template' => "<div class=\"col-md-6\">{input}{error}</div>",
                                 ])->textInput([
                                     'type' => 'email',
                                     'class' => 'form-control',
@@ -411,7 +419,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ]) ?>
 
                                 <?= $form->field($callback, 'phone', [
-                                    'template' => "<div class=\"col-md-6\">{input}</div>",
+                                    'template' => "<div class=\"col-md-6\">{input}{error}</div>",
                                 ])->textInput([
                                     'type' => 'text',
                                     'class' => 'form-control',
@@ -419,7 +427,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ]) ?>
 
                                 <?= $form->field($callback, 'message', [
-                                    'template' => "<div class=\"col-md-12\">{input}</div>",
+                                    'template' => "<div class=\"col-md-12\">{input}{error}</div>",
                                 ])->textarea([
                                     'class' => 'form-control',
                                     'rows' => 3,

@@ -7,6 +7,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use app\models\Book;
 use yii\helpers\Url;
+use kartik\datetime\DateTimePicker;
 
 ?>
 
@@ -57,13 +58,25 @@ use yii\helpers\Url;
                                     'prompt'=>'Виберіть послугу'
                                 ],) ?>
 
-                                <?= $form->field($book, 'date', [
-                                    'template' => "<div class=\"form-group row\"><div class=\"col-md-10\">{label}{input}{error}</div></div>",
-                                ])->textInput([
-                                    'type' => 'datetime-local',
-                                    'class' => 'form-control',
 
-                                ])?>
+                                <?=$form->field($book, 'date', [
+                                    'template' => "<div class=\"form-group row\"><div class=\"col-md-10\">{label}{input}{error}</div></div>",
+                                ])->widget(
+                                    DateTimePicker::class,
+                                    [
+                                        'size'=>'md',
+                                        'type' => DateTimePicker::TYPE_COMPONENT_PREPEND,
+                                        'convertFormat' => true,
+                                        'pluginOptions' => [
+                                            'todayHighlight' => true,
+                                            'todayBtn' => true,
+                                            'format' => 'dd-M-yyyy H:i',
+                                            'autoclose' => true,
+                                            'startDate'=> date('d-m-Y H:i', strtotime(time())),
+                                        ],
+                                        'bsVersion' => '4.x',
+                                    ]) ?>
+
 
                                 <div class="form-group row">
                                     <div class="col-md-10">

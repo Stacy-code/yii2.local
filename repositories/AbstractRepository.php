@@ -43,9 +43,10 @@ abstract class AbstractRepository implements RepositoryInterface
      */
     public function getModel(array $condition = []): ActiveQuery
     {
-        return $this->query->where(
-            $condition
-        );
+        return !empty(array_filter($condition))
+            ? $this->query->where($condition)
+            : $this->query;
+
     }
 
     /**
