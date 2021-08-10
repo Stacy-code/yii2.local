@@ -76,75 +76,8 @@ class Callback extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @inheritDoc
-     */
-    public static function findIdentity($id)
-    {
-        return static::findOne($id);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        //todo достать пользователя по токену
-    }
-
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getAuthKey()
-    {
-        return $this->auth_key;
-    }
 
 
 
-    /**
-     * @param string $email
-     * @return Callback|null
-     */
-    public static function findByCallbackEmail(string $email)
-    {
-        return static::findOne(['email' => $email, 'is_published' => self::ACTIVE_CALLBACK]);
-    }
-
-    /**
-     * @return $this|boolean
-     */
-    public function getCallback()
-    {
-
-        if ($this->_callback === false) {
-            $this->_callback = self::findByCallbackEmail($this->email);
-        }
-
-        return $this->_callback;
-
-    }
-    /**
-     * @return bool
-     */
-    public function callback(): bool
-    {
-
-        if ($this->validate()&& $this->getCallback()) {
-
-            return true;
-        }
-        Yii::$app->session->setFlash('error', 'Не правильно вказані дані!');
-        return false;
-    }
 
 }

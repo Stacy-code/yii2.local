@@ -98,6 +98,7 @@ class SiteController extends AppController
         }
         return $this->render('home',[
                 'callback' => new $this->serviceCallback::$modelClass,
+                'serviceCallback' => $this->serviceCallback
             ]
         );
     }

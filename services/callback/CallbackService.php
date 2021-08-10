@@ -53,4 +53,18 @@ class CallbackService extends CoreService
 
     }
 
+    /**
+     * @return array
+     */
+    public static function getCarouselItems():array{
+        return self::getRepository()->getModel(['is_published' => Callback::ACTIVE_CALLBACK])->all();
+    }
+
+    /**
+     * @return bool
+     */
+    public static function hasCarouselItems():bool{
+        return self::getRepository()->getModel(['is_published' => Callback::ACTIVE_CALLBACK])->exists();
+    }
+
 }
