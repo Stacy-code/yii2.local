@@ -2,6 +2,7 @@
 
 namespace app\repositories;
 
+use yii\base\BaseObject;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use ReflectionException;
@@ -15,7 +16,7 @@ use ReflectionException;
  * @property string      $shortName
  * @property ActiveQuery $model
  */
-abstract class AbstractRepository implements RepositoryInterface
+abstract class AbstractRepository extends BaseObject implements RepositoryInterface
 {
     use RepositoryTrait;
 

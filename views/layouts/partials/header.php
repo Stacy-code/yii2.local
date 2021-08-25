@@ -22,7 +22,10 @@ use yii\helpers\Url;
                         <?php if(Yii::$app->user->isGuest) :?>
                         <span class="top--login"><i class="lnr lnr-exit"></i><a href="<?= Url::to('/identity/login')?>">Login</a> / <a href="<?= Url::to('/identity/register')?>">Register</a></span>
                         <?php else : ?>
-                        <span class="top--login">Welcome <?= Yii::$app->user->identity->name?> !</span>
+                           <span class="top--login" > Welcome <?= Yii::$app->user->identity->name?> !</span>
+
+
+
                         <span class="top--login"><i class="lnr lnr-exit"></i><a href="<?= Url::to('/identity/logout')?>">Log out</a></span>
                         <?php endif; ?>
                         <span class="top--social">
@@ -140,33 +143,20 @@ use yii\helpers\Url;
                             </ul>
                         </li>
                         <!-- li end -->
-                        <!-- shop Menu -->
+                        <!-- my profile Menu -->
+                        <?php if(!Yii::$app->user->isGuest) :?>
                         <li class="has-dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle menu-item">shop</a>
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle menu-item">My profile</a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="shop-3columns.html">shop 3 columns</a>
+                                    <a href="<?=Url::to(['/room/profile']) ?>">Особисті дані</a>
                                 </li>
                                 <li>
-                                    <a href="shop-4columns.html">shop 4 columns</a>
-                                </li>
-                                <li>
-                                    <a href="shop-sidebar-left.html">shop products LS</a>
-                                </li>
-                                <li>
-                                    <a href="shop-sidebar-right.html">shop products RS</a>
-                                </li>
-                                <li>
-                                    <a href="shop-single.html">shop single</a>
-                                </li>
-                                <li>
-                                    <a href="shop-cart.html">shop cart</a>
-                                </li>
-                                <li>
-                                    <a href="shop-checkout.html">shop checkout</a>
+                                    <a href="<?=Url::to(['/room/book']) ?>">Мої записи</a>
                                 </li>
                             </ul>
                         </li>
+                        <?php endif;?>
                         <!-- li end -->
                     </ul>
                     <!-- Module Cart -->

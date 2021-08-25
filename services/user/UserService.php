@@ -6,6 +6,7 @@ use app\models\User;
 use app\models\UserSearch;
 use app\repositories\user\UserRepository;
 use app\services\CoreService;
+use Yii;
 
 class UserService extends CoreService
 {
@@ -52,4 +53,14 @@ class UserService extends CoreService
 
     }
 
+    /**
+     * @return User|null
+     */
+    public function getProfileModel(): ?User
+    {
+        self::$model = $this->repository->getModel()
+            ->where(['id' => Yii::$app->user->id])->one();
+        return self::$model instanceof User
+            ? self::$model : null;
+    }
 }

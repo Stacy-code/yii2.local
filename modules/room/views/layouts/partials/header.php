@@ -141,32 +141,19 @@ use yii\helpers\Url;
                         </li>
                         <!-- li end -->
                         <!-- shop Menu -->
-                        <li class="has-dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle menu-item">shop</a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="shop-3columns.html">shop 3 columns</a>
-                                </li>
-                                <li>
-                                    <a href="shop-4columns.html">shop 4 columns</a>
-                                </li>
-                                <li>
-                                    <a href="shop-sidebar-left.html">shop products LS</a>
-                                </li>
-                                <li>
-                                    <a href="shop-sidebar-right.html">shop products RS</a>
-                                </li>
-                                <li>
-                                    <a href="shop-single.html">shop single</a>
-                                </li>
-                                <li>
-                                    <a href="shop-cart.html">shop cart</a>
-                                </li>
-                                <li>
-                                    <a href="shop-checkout.html">shop checkout</a>
-                                </li>
-                            </ul>
-                        </li>
+                        <?php if(!Yii::$app->user->isGuest) :?>
+                            <li class="has-dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle menu-item">My profile</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="<?=Url::to(['/room/profile']) ?>">Особисті дані</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=Url::to(['/room/book']) ?>">Мої записи</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        <?php endif;?>
                         <!-- li end -->
                     </ul>
                     <!-- Module Cart -->
