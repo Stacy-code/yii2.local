@@ -1,39 +1,39 @@
 <?php
 
 
-namespace app\modules\admin\assets;
+namespace app\modules\room\assets;
 
 
 use app\assets\BaseAssetBundle;
 use yii\web\JqueryAsset;
+use yii\web\YiiAsset;
 
-class AdminAsset extends BaseAssetBundle
+class RoomAsset extends BaseAssetBundle
 {
     /**
      * @var string $sourcePath
      * Папка со стилями и скриптами
      */
-    public $sourcePath = '@webroot/themes/backend';
+    public $sourcePath = '@webroot/themes/frontend';
     /**
      * @var array
      * Підключаємо стилі
      */
     public $css = [
+        'https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900%7COpen+Sans:300,300i,400,400i,600,600i,700,700i,800,800i',
+        'css/external.css',
         'css/bootstrap.min.css',
-        'css/icons.min.css',
-        'css/app.min.css',
-   ];
+        'css/style.css'
+    ];
 
     /**
      * @var array
      * Підключаємо скріпти
      */
     public $js = [
-        'libs/node-waves/waves.min.js',
-        'libs/simplebar/simplebar.min.js',
-        'libs/metismenu/metisMenu.min.js',
-        'libs/bootstrap/js/bootstrap.bundle.min.js',
-        'js/app.js',
+        'js/plugins/bootstrap.js',
+        'js/plugins.js',
+        'js/functions.js'
 
     ];
 
@@ -42,7 +42,10 @@ class AdminAsset extends BaseAssetBundle
      * Залежності і jquery
      */
     public $depends = [
-        JqueryAsset::class
+        YiiAsset::class,
+        JqueryAsset::class,
+
+
     ];
 
 

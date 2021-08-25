@@ -4,6 +4,7 @@
 namespace app\modules\admin\assets;
 
 
+use app\assets\BaseAssetBundle;
 use yii\web\JqueryAsset;
 use yii\web\YiiAsset;
 
