@@ -34,7 +34,7 @@ class DashboardController extends AppController
     public function init() :void
     {
         parent::init();
-        AdminAsset::register(Yii::$app->view);
+        RoomAsset::register(Yii::$app->view);
     }
 
     /**
@@ -45,7 +45,7 @@ class DashboardController extends AppController
         return [
             'error' => [
                 'class' => ErrorAction::class,
-                'view' => '@app/modules/admin/views/dashboard/error.php'
+                'view' => '@app/modules/room/views/dashboard/error.php'
             ]
         ];
     }

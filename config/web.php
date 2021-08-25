@@ -19,6 +19,11 @@ $config = [
             'defaultRoute' => 'dashboard',
             'layout'       => 'admin',
         ],
+        'room' => [
+            'class'        => \app\modules\room\Module::class,
+            'defaultRoute' => 'dashboard',
+            'layout'       => 'room',
+        ]
     ],
     'components' => [
         'db'=>$db,
