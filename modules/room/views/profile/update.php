@@ -50,11 +50,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="booking-form">
                     <?php $form = ActiveForm::begin([
                         'fieldConfig' => [
-                            'labelOptions' => ['class' => 'mb-0'],
+                            'labelOptions' => ['class' => 'mb-3'],
                         ],
                     ]); ?>
                     <?= $form->field($user, 'name', [
-                        'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\">{input}</div>",
+                        'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\">{label}{input}{error}</div>",
                     ])->textInput([
                         'type' => 'text',
                         'class' => 'form-control',
@@ -63,15 +63,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                     <?= $form->field($user, 'email', [
-                        'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\">{input}</div>",
+                        'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\">{label}{input}{error}</div>",
                     ])->textInput([
                         'type' => 'email',
                         'class' => 'form-control',
                         'placeholder' => 'Введіть електронну адресу',
+                        'readonly' => true
                     ]) ?>
 
                     <?= $form->field($user, 'phone', [
-                        'template' => "<div class=\"col-md-4\">{input}</div>",
+                        'template' => "<div class=\"col-md-4\">{label}{input}{error}</div>",
                     ])->textInput([
                         'type' => 'text',
                         'class' => 'form-control',

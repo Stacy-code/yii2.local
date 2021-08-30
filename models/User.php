@@ -35,6 +35,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public const LOGIN_SCENARIO = 'login';
     public const REGISTER_SCENARIO = 'register';
+    public const PROFILE_SCENARIO = 'profile';
 
     /**
      * @var int ACTIVE_USER
@@ -75,6 +76,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             [['active'], 'integer'],
             [['email'], 'email'],
+            [['phone'], 'string', 'max' => 255],
             [['active'], 'default', 'value' => 1],
             [['email', 'password', 'auth_key'], 'string', 'max' => 255],
             [['email', 'password'], 'required', 'on' => self::LOGIN_SCENARIO],
@@ -95,6 +97,7 @@ class User extends ActiveRecord implements IdentityInterface
             'id' => 'ID',
             'name' => 'Ім\'я',
             'email' => 'Електронна адреса',
+            'phone' => 'Телефон',
             'password' => 'Пароль',
             'passwordConfirm' => 'Підтверджений пароль',
             'auth_key' => 'Auth key',
@@ -116,9 +119,13 @@ class User extends ActiveRecord implements IdentityInterface
             'email', 'password'
         ];
         $scenario[self::REGISTER_SCENARIO] = [
-            'email', 'name', 'password', 'passwordConfirm', 'active'
+            'email', 'name', 'password', 'passwordConfirm', 'active', 'phone'
         ];
-        $scenario['default'] = ['id' ,'email', 'name', 'password', 'passwordConfirm','auth_key','reset_key', 'active',  'created_at' ,'updated_at'];
+        $scenario[self::PROFILE_SCENARIO] = [
+            'name', 'phone'
+        ];
+
+        $scenario['default'] = ['id' ,'email', 'phone','name', 'password', 'passwordConfirm','auth_key','reset_key', 'active',  'created_at' ,'updated_at'];
         return $scenario;
     }
 

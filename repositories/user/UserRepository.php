@@ -66,6 +66,7 @@ class UserRepository extends AbstractRepository
         } catch (\Exception $e) {
             $result['success'] = false;
         }
+
         return $result;
     }
 

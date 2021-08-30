@@ -6,10 +6,7 @@ use app\models\User;
 use app\modules\room\assets\RoomAsset;
 use Yii;
 use yii\base\Module as BaseModule;
-use app\controllers\AppController;
-use yii\web\ErrorAction;
-use yii\web\NotFoundHttpException;
-use yii\web\Response;
+use yii\helpers\Url;
 use app\services\user\UserService;
 
 /**
@@ -17,7 +14,7 @@ use app\services\user\UserService;
  *
  * @package app\modules\room\controllers
  */
-class ProfileController extends AppController
+class ProfileController extends BaseController
 {
 
 
@@ -25,6 +22,9 @@ class ProfileController extends AppController
      * @var UserService
      */
     public $service;
+
+
+    public $defaultAction = "update";
     /**
      * DashboardController constructor.
      *
@@ -34,7 +34,6 @@ class ProfileController extends AppController
      */
     public function __construct($id, BaseModule $module, UserService $service, $config = [])
     {
-
         parent::__construct($id, $module, $config);
         $this->service = $service;
     }
@@ -48,49 +47,31 @@ class ProfileController extends AppController
         RoomAsset::register(Yii::$app->view);
     }
 
-    /**
-     * @return array
-     */
-    public function actions(): array
-    {
-        return [
-            'error' => [
-                'class' => ErrorAction::class,
-                'view' => '@app/modules/room/views/profile/index.php'
-            ]
-        ];
-    }
+
 
     /**
-     * @return string
-     * @throws NotFoundHttpException
+     * Обновление записи
      */
-    public function actionIndex(): string
+    public function actionUpdate()
     {
+
         $user = $this->service->getProfileModel();
-        if($user instanceof User){
-            return $this->render('index', [
-                    'user' =>  $user
-                ]
-            );
-        }
-        throw new NotFoundHttpException("404");
 
+        if (Yii::$app->request->isPost) {
+            $user->setScenario(User::PROFILE_SCENARIO);
+            $this->service->update($user,Yii::$app->request->post());
+            Yii::$app->session->setFlash('success' , "Запис відновлено!");
+            return Yii::$app->response->redirect(Url::toRoute(['/room/profile/update']), 301);
+        }
+        return $this->render('update',[
+                'user' => $user
+            ]
+        );
     }
 
 
-    /**
-     * @return string
-     */
-    public function actionError(): string
-    {
-        $exception = Yii::$app->errorHandler->exception;
-        if ($exception !== null) {
 
-            return $this->render('error', [
-                'exception' => $exception
-            ]);
-        }
-        return '';
-    }
+
+
+
 }

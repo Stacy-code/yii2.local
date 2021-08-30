@@ -396,14 +396,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="contact-form">
                             <?php $form = ActiveForm::begin([
                                 'fieldConfig' => [
-                                    'labelOptions' => ['class' => 'mb-0'],
+                                    'labelOptions' => ['class' => 'mb-2'],
                                 ],
                             ]); ?>
 
                             <div class="row">
 
                                 <?= $form->field($callback, 'name', [
-                                    'template' => "<div class=\"col-md-12\">{input}{error}</div>",
+                                    'template' => "<div class=\"col-md-12\">{label}{input}{error}</div>",
                                 ])->textInput([
                                     'type' => 'text',
                                     'class' => 'form-control',
@@ -411,7 +411,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ]) ?>
 
                                 <?= $form->field($callback, 'email', [
-                                    'template' => "<div class=\"col-md-6\">{input}{error}</div>",
+                                    'template' => "<div class=\"col-md-6\">{label}{input}{error}</div>",
                                 ])->textInput([
                                     'type' => 'email',
                                     'class' => 'form-control',
@@ -419,7 +419,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ]) ?>
 
                                 <?= $form->field($callback, 'phone', [
-                                    'template' => "<div class=\"col-md-6\">{input}{error}</div>",
+                                    'template' => "<div class=\"col-md-6\">{label}{input}{error}</div>",
                                 ])->textInput([
                                     'type' => 'text',
                                     'class' => 'form-control',
@@ -427,11 +427,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ]) ?>
 
                                 <?= $form->field($callback, 'message', [
-                                    'template' => "<div class=\"col-md-12\">{input}{error}</div>",
+                                    'template' => "<div class=\"col-md-12\">{label}{input}{error}</div>",
                                 ])->textarea([
                                     'class' => 'form-control',
                                     'rows' => 3,
                                     'placeholder' => 'Залиште свій відгук',
+
                                 ]) ?>
 
                                 <div class="col-md-12">

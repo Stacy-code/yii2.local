@@ -67,10 +67,10 @@ class Callback extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'email' => 'Email',
-            'phone' => 'Phone',
-            'message' => 'Message',
+            'name' => 'Ім\'я',
+            'email' => 'Пошта',
+            'phone' => 'Телефон',
+            'message' => 'Відгук',
             'is_published' => 'Is Published',
             'created_at' => 'Created At',
         ];

@@ -25,7 +25,6 @@ class Module extends BaseModule
     {
         parent::init();
         Yii::$app->user->loginUrl = '/identity/login';
-        Yii::$app->errorHandler->errorAction = 'room/dashboard/error'; //dashboardController
     }
 
     /**

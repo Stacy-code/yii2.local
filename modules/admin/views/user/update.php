@@ -31,7 +31,9 @@ use yii\helpers\Url;
 
                                 <div class="form-group row">
                                     <div class="col-md-10">
-                                        <?=$form->field($user , 'email')->textInput(['value' => $user->email])?>
+                                        <?=$form->field($user , 'email')->textInput([
+                                                'value' => $user->email,
+                                        ])?>
                                     </div>
                                 </div>
 
