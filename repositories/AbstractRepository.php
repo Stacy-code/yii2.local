@@ -2,6 +2,7 @@
 
 namespace app\repositories;
 
+use Yii;
 use yii\base\BaseObject;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
@@ -12,8 +13,8 @@ use ReflectionException;
  *
  * @package app\repositories\lang
  *
- * @property string      $table
- * @property string      $shortName
+ * @property string $table
+ * @property string $shortName
  * @property ActiveQuery $model
  */
 abstract class AbstractRepository extends BaseObject implements RepositoryInterface
@@ -60,12 +61,13 @@ abstract class AbstractRepository extends BaseObject implements RepositoryInterf
         $this->dataPost = $data;
         $this->entityModel = new $this->modelClass();
         $this->processType = __FUNCTION__;
-        return $this->processSave();
+
+        return $this->processCreate();
     }
 
     /**
      * @param ActiveRecord|null $model
-     * @param array             $data
+     * @param array $data
      *
      * @return array
      */
@@ -76,6 +78,7 @@ abstract class AbstractRepository extends BaseObject implements RepositoryInterf
         $this->processType = __FUNCTION__;
         return $this->processUpdate();
     }
+
 
     /**
      * @param ActiveRecord $model
@@ -89,19 +92,94 @@ abstract class AbstractRepository extends BaseObject implements RepositoryInterf
         return $this->processDelete();
     }
 
+
     /**
      * @return array
      */
-    public function processSave(): array
+    public function processCreate(): array
     {
-        return ['success' => false];
+        $result = ['success' => false];
+        $transaction = Yii::$app->db->beginTransaction();
+        try {
+
+            $this->entityModel->load($this->dataPost);
+
+            $this->entityModel->date = Yii::$app->formatter->format($this->entityModel->attributes['date'] ,"Y-m-d H:i:s");
+            if ($this->entityModel->validate()) {
+
+                $result['success'] = true;
+                $this->entityModel->save();
+
+            }
+            else{
+
+                $result['errors'] = $this->entityModel->getErrors();
+            }
+
+            $transaction->commit();
+        } catch (\Exception $e) {
+
+            $result['errors'] = $e->getMessage();
+            $transaction->rollBack();
+            $result['success'] = false;
+        }
+
+        return $result;
     }
+
+    /**
+     * @return array
+     */
+    public function processUpdate(): array
+    {
+        $result = ['success' => false];
+        $transaction = Yii::$app->db->beginTransaction();
+        try {
+
+            $this->entityModel->load($this->dataPost);
+            if ($this->entityModel->validate()) {
+
+                $result['success'] = true;
+                $this->entityModel->save();
+
+            }
+            else{
+                $result['errors'] = $this->entityModel->getErrors();
+            }
+            $transaction->commit();
+
+        } catch (\Exception $e) {
+            $result['errors'] = $e->getMessage();
+            $transaction->rollBack();
+            $result['success'] = false;
+        }
+
+        return $result;
+    }
+
 
     /**
      * @return array
      */
     public function processDelete(): array
     {
-        return ['success' => false];
+        $result = [
+            'success' => false,
+        ];
+
+        $transaction = Yii::$app->db->beginTransaction();
+
+        try {
+            $result['success'] = true;
+            $this->entityModel->delete();
+            $transaction->commit();
+        } catch (\Exception | \Throwable $e) {
+            $result['errors'] = $e->getMessage();
+            $transaction->rollBack();
+            $result['success'] = false;
+
+        }
+
+        return $result;
     }
 }

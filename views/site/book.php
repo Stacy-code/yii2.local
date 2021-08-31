@@ -45,6 +45,28 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <!-- .col-md-6 end -->
         </div>
+        <div class="row clearfix">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+                <div class="heading heading-2 mb-80">
+                    <p class="heading--desc">Якщо ви вирішили піти в барбершоп, то абсолютно точно
+                        можете розраховувати на:</p>
+                    <ul>
+                        <li>Чудовий сервіс;</li>
+                        <li>Миття голови і укладання дорогущими засобами і шампунями;</li>
+                        <li>Професійну стрижку;</li>
+                        <li>Можливість поговорити з майстром про що завгодно;</li>
+                        <li>Отримання цікавого досвіду гоління лезом;</li>
+                        <li>Вживання гарячих і міцних напоїв безкоштовно;</li>
+                        <li>Відмінні кадри в цікавому антуражі приміщення;</li>
+                        <li>Стильний зовнішній вигляд, як підсумок відвідування, за який не шкода віддати більше грошей, ніж
+                            в традиційній перукарні.
+                        </li>
+                    </ul>
+                    <div class="divider--line"></div>
+                </div>
+            </div>
+            <!-- .col-md-6 end -->
+        </div>
 
         <!-- .row end -->
         <div class="row">
@@ -52,11 +74,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="booking-form">
                     <?php $form = ActiveForm::begin([
                         'fieldConfig' => [
-                            'labelOptions' => ['class' => 'mb-0'],
+                            'labelOptions' => ['class' => 'mb-2'],
                         ],
                     ]); ?>
                     <?= $form->field($book, 'name', [
-                        'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\">{input}</div>",
+                        'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\">{label}{input}{error}</div>",
                     ])->textInput([
                         'type' => 'text',
                         'class' => 'form-control',
@@ -65,7 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                     <?= $form->field($book, 'email', [
-                        'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\">{input}</div>",
+                        'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\">{label}{input}{error}</div>",
                     ])->textInput([
                         'type' => 'email',
                         'class' => 'form-control',
@@ -73,7 +95,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]) ?>
 
                     <?= $form->field($book, 'phone', [
-                        'template' => "<div class=\"col-md-4\">{input}</div>",
+                        'template' => "<div class=\"col-md-4\">{label}{input}{error}</div>",
                     ])->textInput([
                         'type' => 'text',
                         'class' => 'form-control',
@@ -82,7 +104,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                     <?= $form->field($book, 'service', [
-                        'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\"><div class=\"form-select\">{input}</div></div>",
+                        'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\"><div class=\"form-select\">{label}{input}{error}</div></div>",
                     ])->dropDownList([
                         'Чоловіча стрижка' => 'Чоловіча стрижка',
                         'Стрижка бороди' => 'Стрижка бороди',
@@ -95,26 +117,21 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],) ?>
 
                     <?=$form->field($book, 'date', [
-                        'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\">{input}</div>",
+                        'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\">{label}{input}{error}</div>",
                     ])->widget(
                         DateTimePicker::class,
                         [
-                            'size'=>'md',
-                            'type' => DateTimePicker::TYPE_COMPONENT_PREPEND,
-                            'convertFormat' => true,
+                            'options' => ['placeholder' => ''],
                             'pluginOptions' => [
-                                'todayHighlight' => true,
-                                'todayBtn' => true,
-                                'format' => 'dd-M-yyyy H:i',
                                 'autoclose' => true,
-                                'startDate'=> date('d-m-Y H:i', strtotime(time())),
                             ],
-                        ])->label(''); ?>
+
+                        ]); ?>
 
 
 
                     <?= $form->field($book, 'desires', [
-                        'template' => "<div class=\"col-xs-12 col-sm-12 col-md-12\">{input}</div>",
+                        'template' => "<div class=\"col-xs-12 col-sm-12 col-md-12\">{label}{input}{error}</div>",
                     ])->textarea([
                         'class' => 'form-control',
                         'rows' => 3,
@@ -141,28 +158,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <!-- .col-md-8 end -->
     </div>
 
-    <div class="row clearfix">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
-            <div class="heading heading-2 mb-80">
-                <p class="heading--desc">Резюмуючи вищесказане, якщо ви вирішили піти в барбершоп, то абсолютно точно
-                    можете розраховувати на:</p>
-                <ul>
-                    <li>Чудовий сервіс;</li>
-                    <li>Миття голови і укладання дорогущими засобами і шампунями;</li>
-                    <li>Професійну стрижку;</li>
-                    <li>Можливість поговорити з майстром про що завгодно;</li>
-                    <li>Отримання цікавого досвіду гоління лезом;</li>
-                    <li>Вживання гарячих і міцних напоїв безкоштовно;</li>
-                    <li>Відмінні кадри в цікавому антуражі приміщення;</li>
-                    <li>Стильний зовнішній вигляд, як підсумок відвідування, за який не шкода віддати більше грошей, ніж
-                        в традиційній перукарні.
-                    </li>
-                </ul>
-                <div class="divider--line"></div>
-            </div>
-        </div>
-        <!-- .col-md-6 end -->
-    </div>
+
     <!-- .row end -->
     <div class="divider--shape-1down"></div>
     </div>

@@ -58,13 +58,5 @@ interface RepositoryInterface
      */
     public function delete(ActiveRecord $model): array;
 
-    /**
-     * @return array
-     */
-    public function processSave(): array;
 
-    /**
-     * @return array
-     */
-    public function processDelete(): array;
 }

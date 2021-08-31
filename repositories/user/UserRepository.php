@@ -33,62 +33,7 @@ class UserRepository extends AbstractRepository
         parent::__construct($entity);
     }
 
-    public function processDelete(): array
-    {
-        $result = [
-            'success' => false,
-        ];
-        try {
-            $result['success'] = true;
-            $this->entityModel->delete();
 
-        } catch (\Exception $e) {
-            $result['success'] = false;
-        }
-        return $result;
-    }
-
-    public function processUpdate(): array
-    {
-
-        $result = ['success' => false];
-        try {
-
-            $this->entityModel->load($this->dataPost);
-            if ($this->entityModel->validate()) {
-
-                $result['success'] = true;
-                $this->entityModel->save();
-
-            }
-
-
-        } catch (\Exception $e) {
-            $result['success'] = false;
-        }
-
-        return $result;
-    }
-
-    public function processSave(): array
-    {
-
-        $result = ['success' => false];
-        try {
-            $this->entityModel->load($this->dataPost);
-            if ($this->entityModel->validate()) {
-
-                $result['success'] = true;
-                $this->entityModel->save();
-
-            }
-
-
-        } catch (\Exception $e) {
-            $result['success'] = false;
-        }
-        return $result;
-    }
 
 
 }

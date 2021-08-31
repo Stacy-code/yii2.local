@@ -51,6 +51,8 @@ class Book extends ActiveRecord
         return [
             [['email'], 'email'],
             [['status'], 'default', 'value' => 'new'],
+            [['name', 'phone', 'desires'], 'string'],
+            [['date'], 'datetime', 'format' => 'php:Y-m-d H:i:s'],
             [['email', 'name', 'phone', 'date', 'service'], 'required'],
         ];
     }
@@ -86,82 +88,9 @@ class Book extends ActiveRecord
     }
 
 
-    /**
-     * @inheritDoc
-     */
-    public static function findIdentity($id)
-    {
-        return static::findOne($id);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        //todo достать пользователя по токену
-    }
 
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getAuthKey()
-    {
-        return $this->auth_key;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function validateAuthKey($authKey)
-    {
-        return $this->auth_key === $authKey;
-    }
-
-    /**
-     * @param string $email
-     * @return Book|null
-     */
-     public static function findByBookEmail(string $email)
-     {
-          return static::findOne(['email' => $email]);
-      }
-
-    /**
-     * @return $this|boolean
-     */
-      public function getBook()
-      {
-
-          if ($this->_book === false) {
-             $this->_book = self::findByBookEmail($this->email);
-          }
-
-        return $this->_book;
-
-      }
-    /**
-     * @return bool
-     */
-    public function book(): bool
-    {
-
-        if ($this->validate()) {
-
-            return true;
-        }
-        Yii::$app->session->setFlash('error', 'Не правильно вказані дані!');
-        return false;
-    }
 
 
 }
