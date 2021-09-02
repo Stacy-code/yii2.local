@@ -119,7 +119,7 @@ class SiteController extends AppController
 
         if (Yii::$app->request->isPost) {
 
-            $result = $this->service->create(Yii::$app->request->post());
+            $result = $this->service->create($this->service->getSaveData());
             $result['success']
                 ? Yii::$app->session->setFlash('success' , "Запис відновлено!")
                 :  Yii::$app->session->setFlash('error' , $result['msg']);

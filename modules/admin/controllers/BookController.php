@@ -58,7 +58,7 @@ class BookController extends AppController
 
         if (Yii::$app->request->isPost) {
 
-            $this->service->create(Yii::$app->request->post());
+            $this->service->create($this->service->getSaveData());
             Yii::$app->session->setFlash('success' , "Запис додано!");
             return Yii::$app->response->redirect(Url::toRoute(['/admin/book/index']), 301);
         }
@@ -77,7 +77,7 @@ class BookController extends AppController
 
         if (Yii::$app->request->isPost) {
 
-            $this->service->update($book , Yii::$app->request->post());
+            $this->service->update($book , $this->service->getSaveData());
             Yii::$app->session->setFlash('success' , "Запис відновлено!");
             return Yii::$app->response->redirect(Url::toRoute(['/admin/book/index']), 301);
         }

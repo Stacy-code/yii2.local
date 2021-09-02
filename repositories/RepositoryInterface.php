@@ -18,6 +18,9 @@ use ReflectionException;
  */
 interface RepositoryInterface
 {
+
+
+
     /**
      * @return string
      */

@@ -6,6 +6,8 @@ use app\models\Book;
 use app\repositories\book\BookRepository;
 use app\services\CoreService;
 use app\models\BookSearch;
+use Yii;
+
 
 class BookService extends CoreService
 {
@@ -51,6 +53,26 @@ class BookService extends CoreService
         parent::__construct($repository);
         $this->repository = $repository;
 
+    }
+
+    /**
+     * @return array
+     */
+    public function getSaveData():array{
+        $normalData = Yii::$app->request->post();
+        try {
+            if(isset($normalData[$this->repository->getShortName()]['date'])){
+                $date = $normalData[$this->repository->getShortName()]['date'];
+                $normalData[$this->repository->getShortName()]['date'] = Yii::$app->formatter->asDate(
+                    $date, "php:Y-m-d H:i:s"
+                );
+            }
+        }
+        catch(\Exception $e){
+            Yii::error($e->getMessage());
+        }
+
+        return $normalData;
     }
 
 }

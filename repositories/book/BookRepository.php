@@ -25,6 +25,8 @@ class BookRepository extends AbstractRepository
      */
     public $entityModel;
 
+
+
     /**
      * UserRepository constructor.
      * @param Book $entity
@@ -34,6 +36,8 @@ class BookRepository extends AbstractRepository
     {
         parent::__construct($entity);
     }
+
+
 
 
 

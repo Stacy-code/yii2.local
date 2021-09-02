@@ -72,7 +72,7 @@ use kartik\datetime\DateTimePicker;
                                             'todayBtn' => true,
                                             'format' => 'dd-M-yyyy H:i',
                                             'autoclose' => true,
-                                            'startDate'=> date('d-m-Y H:i', strtotime(time())),
+                                            'startDate'=> date('d-m-Y H:i'),
                                         ],
                                         'bsVersion' => '4.x',
                                     ]) ?>

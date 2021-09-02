@@ -22,6 +22,10 @@ abstract class AbstractRepository extends BaseObject implements RepositoryInterf
     use RepositoryTrait;
 
     /**
+     * @var array
+     */
+    public array $events = [];
+    /**
      * @return string
      */
     public function getTable(): string
@@ -61,6 +65,7 @@ abstract class AbstractRepository extends BaseObject implements RepositoryInterf
         $this->dataPost = $data;
         $this->entityModel = new $this->modelClass();
         $this->processType = __FUNCTION__;
+
 
         return $this->processCreate();
     }
@@ -104,7 +109,6 @@ abstract class AbstractRepository extends BaseObject implements RepositoryInterf
 
             $this->entityModel->load($this->dataPost);
 
-            $this->entityModel->date = Yii::$app->formatter->format($this->entityModel->attributes['date'] ,"Y-m-d H:i:s");
             if ($this->entityModel->validate()) {
 
                 $result['success'] = true;
