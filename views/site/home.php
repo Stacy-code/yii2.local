@@ -2,6 +2,7 @@
 
 use app\services\callback\CallbackService;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use app\models\Callback;
 
@@ -27,9 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
                         <div class="heading text--center mb-70">
-                            <h2 class="heading--title">our services</h2>
-                            <p class="heading--desc">Duis aute irure dolor in reprehenderit volupte velit esse cillum
-                                dolore eu fugiat pariatursint occaecat cupidatat non proident culpa.</p>
+                            <h2 class="heading--title">Наш сервіс</h2>
+                            <p class="heading--desc">Ми не намагаємось заробити, ми намагаємось змінити життя людей</p>
+                            <p class="heading--desc">Джефф Безос</p>
                             <div class="divider--line"></div>
                         </div>
                     </div>
@@ -43,9 +44,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="service--img">
                                 <img src="http://demo.zytheme.com/hairy/assets/images/services/1.jpg" alt="img">
                             </div>
-                            <h3>Haircut Styles</h3>
-                            <p>Duis aute irure dolor in reprehenderit in volupte velit esse cillum dolore fugiat
-                                nulla.</p>
+                            <h3>Чоловіча стрижка</h3>
+                            <p>Чоловіча стрижка в нашому барбершопі - це не тільки проста можливіть стати
+                                модним і змінити стиль, а й підкреслити вашу індивідуальність і мужність.</p>
                         </div>
                         <!-- .container end -->
                     </div>
@@ -57,9 +58,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="service--img">
                                 <img src="http://demo.zytheme.com/hairy/assets/images/services/2.jpg" alt="img">
                             </div>
-                            <h3>Beard Trim</h3>
-                            <p>Duis aute irure dolor in reprehenderit in volupte velit esse cillum dolore fugiat
-                                nulla.</p>
+                            <h3>Стрижка бороди</h3>
+                            <p>Борода є важливим елементом чоловічого стилю. Саме тому  в нашому барбершопі
+                                - майстри підберуть ідеальну форму бороди під вашу форму обличчя, враховуючи
+                                побажання клієнта і модні тенденції.</p>
                         </div>
                         <!-- .container end -->
                     </div>
@@ -71,21 +73,16 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="service--img">
                                 <img src="http://demo.zytheme.com/hairy/assets/images/services/3.jpg" alt="img">
                             </div>
-                            <h3>Hot Shave</h3>
-                            <p>Duis aute irure dolor in reprehenderit in volupte velit esse cillum dolore fugiat
-                                nulla.</p>
+                            <h3>Королівське гоління</h3>
+                            <p>Відчуйте задоволення від справжнього королівського гоління, після якого
+                                ваша шкіра буде ідеально гладкою і ви забудите про роздратування на довгий час.</p>
                         </div>
                         <!-- .container end -->
                     </div>
                     <!-- .col-md-4 end -->
                 </div>
                 <!-- .row end -->
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 clearfix mt-70 text--center">
-                        <a href="#" class="btn btn--secondary btn--bordered btn--rounded">View More</a>
-                    </div>
-                    <!-- .col-md-12 end -->
-                </div>
+
                 <!-- .row end -->
             </div>
             <!-- .container end -->
@@ -102,9 +99,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
                         <div class="heading text--center mb-70">
-                            <h2 class="heading--title text-white">Our Pricing</h2>
-                            <p class="heading--desc text-white">Duis aute irure dolor in reprehenderit volupte velit
-                                esse cillum dolore eu fugiat pariatursint occaecat cupidatat non proident culpa.</p>
+                            <h2 class="heading--title text-white">Наші ціни</h2>
                             <div class="divider--line"></div>
                         </div>
                     </div>
@@ -229,48 +224,25 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
                         <div class="text--center heading heading-2 mb-70">
-                            <h2 class="heading--title">Skilled Barbers</h2>
-                            <p class="heading--desc mb-0">Duis aute irure dolor in reprehenderit volupte velit esse
-                                cillum dolore eu fugiat pariatursint occaecat cupidatat non proident culpa.</p>
-                            <div class="divider--line divider--center"></div>
-                        </div>
-                    </div>
-                    <!-- .col-md-6 end -->
+                            <h2 class="heading--title">Наш майстер</h2>
+                            <!--  <p class="heading--desc mb-0">Duis aute irure dolor in reprehenderit volupte velit esse
+                                  cillum dolore eu fugiat pariatursint occaecat cupidatat non proident culpa.</p>-->
+                              <div class="divider--line divider--center"></div>
+                          </div>
+                      </div>
+                      <!-- .col-md-6 end -->
                 </div>
                 <!-- .row end -->
                 <div class="row">
                     <!-- Member #1 -->
-                    <div class="col-xs-12 col-sm-4 col-md-4">
-                        <div class="member">
-                            <div class="member-img">
-                                <img src="http://demo.zytheme.com/hairy/assets/images/team/grid/1.jpg" alt="member"/>
-                                <div class="member-overlay">
-                                    <div class="member-social">
-                                        <div class="pos-vertical-center">
-                                            <a href="#"><i class="fa fa-facebook"></i></a>
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
-                                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- .memebr-ovelay end -->
-                            </div>
-                            <!-- .member-img end -->
-                            <div class="member-info">
-                                <h5>Ryan Printz</h5>
-                                <h6>Barber</h6>
-                            </div>
-                            <!-- .member-info end -->
-                        </div>
-                        <!-- .member end -->
-                    </div>
+
                     <!-- .col-md-4 end -->
 
                     <!-- Member #2 -->
                     <div class="col-xs-12 col-sm-4 col-md-4">
                         <div class="member">
                             <div class="member-img">
-                                <img src="http://demo.zytheme.com/hairy/assets/images/team/grid/2.jpg" alt="member"/>
+                                <img src="<?=Url::to('/themes/frontend/images/team/grid/1.jpg'); ?>" alt="member"/>
                                 <div class="member-overlay">
                                     <div class="member-social">
                                         <div class="pos-vertical-center">
@@ -284,8 +256,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                             <!-- .member-img end -->
                             <div class="member-info">
-                                <h5>Steve Martin</h5>
-                                <h6>Barber</h6>
+                                <h5>Роман Гученко</h5>
                             </div>
                             <!-- .member-info end -->
                         </div>
@@ -294,30 +265,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <!-- .col-md-4 end -->
 
                     <!-- Member #3 -->
-                    <div class="col-xs-12 col-sm-4 col-md-4">
-                        <div class="member">
-                            <div class="member-img">
-                                <img src="http://demo.zytheme.com/hairy/assets/images/team/grid/3.jpg" alt="member"/>
-                                <div class="member-overlay">
-                                    <div class="member-social">
-                                        <div class="pos-vertical-center">
-                                            <a href="#"><i class="fa fa-facebook"></i></a>
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
-                                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- .memebr-ovelay end -->
-                            </div>
-                            <!-- .member-img end -->
-                            <div class="member-info">
-                                <h5>Bruce Sam</h5>
-                                <h6>Barber</h6>
-                            </div>
-                            <!-- .member-info end -->
-                        </div>
-                        <!-- .member end -->
-                    </div>
+
                     <!-- .col-md-4 end -->
                 </div>
             </div>
