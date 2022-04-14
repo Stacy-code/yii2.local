@@ -4,10 +4,18 @@
 
 /* @var $book app\models\Book */
 
+/* @var $service Service */
 
+/* @var $serviceService ServiceService */
+
+
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\datetime\DateTimePicker;
+use app\services\service\ServiceService;
+use app\models\Service;
+
 
 
 $this->title = 'Book';
@@ -102,19 +110,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         'placeholder' => 'Введіть телефон',
                     ]) ?>
 
-
+                    <?php if ($serviceService::hasServiceItems()): ?>
                     <?= $form->field($book, 'service', [
                         'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\"><div class=\"form-select\">{label}{input}{error}</div></div>",
-                    ])->dropDownList([
-                        'Чоловіча стрижка' => 'Чоловіча стрижка',
-                        'Стрижка бороди' => 'Стрижка бороди',
-                        'Стрижка вусів' => 'Стрижка вусів',
-                        'Королівське гоління' => 'Королівське гоління',
-                        'Чоловіча стрижка + борода' => 'Чоловіча стрижка + борода',
-                    ], [
+                    ])->dropDownList(ArrayHelper::map($serviceService::getServiceItems(), 'name', 'name'), [
                         'class' => 'form-control',
                         'prompt' => 'Виберіть послугу'
-                    ],) ?>
+                    ]) ?>
+                    <?php endif;?>
 
                     <?=$form->field($book, 'date', [
                         'template' => "<div class=\"col-xs-12 col-sm-12 col-md-4\">{label}{input}{error}</div>",

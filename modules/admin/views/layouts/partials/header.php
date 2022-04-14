@@ -32,12 +32,12 @@ use \yii\helpers\Url;
             </button>
 
             <!-- App Search-->
-            <form class="app-search d-none d-lg-block">
+<!--            <form class="app-search d-none d-lg-block">
                 <div class="position-relative">
                     <input type="text" class="form-control" placeholder="Search...">
                     <span class="ri-search-line"></span>
                 </div>
-            </form>
+            </form>-->
         </div>
 
         <div class="d-flex">
@@ -175,25 +175,25 @@ use \yii\helpers\Url;
                     </a>
                 </li>
 
-                <li>
-                    <a href="<?= Url::to('/admin/calendar/index')?>" class=" waves-effect">
+<!--                <li>
+                    <a href="<?/*= Url::to('/admin/calendar/index')*/?>" class=" waves-effect">
                         <i class="ri-calendar-2-line"></i>
                         <span>Календарь</span>
                     </a>
-                </li>
+                </li>-->
                 <li>
-                    <a href="barber.html" class=" waves-effect">
-                        <i class="ri-barbers-2-line"></i>
-                        <span>Сотрудники</span>
+                    <a href="<?= Url::to('/admin/service/index')?>" class=" waves-effect">
+                        <i class="ri-table-2"></i>
+                        <span>Услуги</span>
                     </a>
                 </li>
 
-                <li>
+<!--                <li>
                     <a href="apps-chat.html" class=" waves-effect">
                         <i class="ri-chat-1-line"></i>
                         <span>Чат</span>
                     </a>
-                </li>
+                </li>-->
 
                 <li>
                     <a href="<?= Url::to('/admin/callback/index')?>" class=" waves-effect">
@@ -203,7 +203,7 @@ use \yii\helpers\Url;
                 </li>
 
 
-                <li class="menu-title">Редактор страницы</li>
+<!--                <li class="menu-title">Редактор страницы</li>
                 <li>
                     <a href="" class="">
                         <i class="ri-gallery-line"></i>
@@ -215,7 +215,7 @@ use \yii\helpers\Url;
                         <i class="ri-news-1-line"></i>
                         <span>Новости</span>
                     </a>
-                </li>
+                </li>-->
 
             </ul>
         </div>

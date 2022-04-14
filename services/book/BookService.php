@@ -3,10 +3,12 @@
 namespace app\services\book;
 
 use app\models\Book;
+use app\models\SearchInterface;
 use app\repositories\book\BookRepository;
 use app\services\CoreService;
 use app\models\BookSearch;
 use Yii;
+use yii\data\ActiveDataProvider;
 
 
 class BookService extends CoreService
@@ -73,6 +75,17 @@ class BookService extends CoreService
         }
 
         return $normalData;
+    }
+
+    public function roomDataProvider(){
+
+        /** @var SearchInterface $filterModel */
+        $filterModel = self::getFilterModel();
+        $query = $filterModel->search(Yii::$app->request->get())->andWhere(["email" => Yii::$app->user->identity->email]);
+        return new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => ['pageSize' => 5]
+        ]);
     }
 
 }

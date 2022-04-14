@@ -5,11 +5,15 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use app\models\Callback;
+use app\services\service\ServiceService;
+use app\models\Service;
 
 
 
 /* @var $callback Callback */
-/* @var $serviceCallback CallbackService*/
+/* @var $serviceCallback CallbackService */
+/* @var $serviceService ServiceService */
+/* @var $service Service */
 /* @var $callbacks Callback */
 /* @var $this yii\web\View */
 $this->title = 'Home';
@@ -17,12 +21,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-home">
 
-    <!-- Document Wrapper
-	============================================= -->
     <div id="wrapper" class="wrapper clearfix">
 
-        <!-- Services #2
-        ============================================= -->
         <section id="service2" class="services services-1 text-center">
             <div class="container">
                 <div class="row">
@@ -34,11 +34,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="divider--line"></div>
                         </div>
                     </div>
-                    <!-- .col-md-6 end -->
                 </div>
-                <!-- .row end -->
                 <div class="row">
-                    <!-- Service #1 -->
                     <div class="col-xs-12 col-sm-4 col-md-4">
                         <div class="service-panel">
                             <div class="service--img">
@@ -48,26 +45,18 @@ $this->params['breadcrumbs'][] = $this->title;
                             <p>Чоловіча стрижка в нашому барбершопі - це не тільки проста можливіть стати
                                 модним і змінити стиль, а й підкреслити вашу індивідуальність і мужність.</p>
                         </div>
-                        <!-- .container end -->
                     </div>
-                    <!-- .col-md-4 end -->
-
-                    <!-- Service #2 -->
                     <div class="col-xs-12 col-sm-4 col-md-4">
                         <div class="service-panel">
                             <div class="service--img">
                                 <img src="http://demo.zytheme.com/hairy/assets/images/services/2.jpg" alt="img">
                             </div>
                             <h3>Стрижка бороди</h3>
-                            <p>Борода є важливим елементом чоловічого стилю. Саме тому  в нашому барбершопі
+                            <p>Борода є важливим елементом чоловічого стилю. Саме тому в нашому барбершопі
                                 - майстри підберуть ідеальну форму бороди під вашу форму обличчя, враховуючи
                                 побажання клієнта і модні тенденції.</p>
                         </div>
-                        <!-- .container end -->
                     </div>
-                    <!-- .col-md-4 end -->
-
-                    <!-- Service #3 -->
                     <div class="col-xs-12 col-sm-4 col-md-4">
                         <div class="service-panel">
                             <div class="service--img">
@@ -77,20 +66,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             <p>Відчуйте задоволення від справжнього королівського гоління, після якого
                                 ваша шкіра буде ідеально гладкою і ви забудите про роздратування на довгий час.</p>
                         </div>
-                        <!-- .container end -->
                     </div>
-                    <!-- .col-md-4 end -->
                 </div>
-                <!-- .row end -->
-
-                <!-- .row end -->
             </div>
-            <!-- .container end -->
         </section>
-        <!-- #service1 end -->
 
-        <!-- pricing #1
-        ============================================= -->
+        <?php if ($serviceService::hasServiceItems()): ?>
         <section id="pricing" class="pricing pricing-1 bg-overlay bg-overlay-dark bg-parallax">
             <div class="bg-section">
                 <img src="http://demo.zytheme.com/hairy/assets/images/background/3.jpg" alt="Background"/>
@@ -103,146 +84,43 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="divider--line"></div>
                         </div>
                     </div>
-                    <!-- .col-md-6 end -->
                 </div>
-                <!-- .row end -->
                 <div class="row">
-                    <!-- Pricing #1 -->
                     <div class="col-xs-12 col-sm-6 col-md-6">
                         <div class="pricing-panel">
-                            <div class="pricing--content">
-                                <h4 class="pricing--heading">Haircut</h4>
-                                <div class="pricing--divider"></div>
-                                <span class="price">$20.00</span>
-                            </div>
-                            <p class="pricing--desc">Our stylist consults & delivers you a precision haircut.</p>
-                        </div>
-                        <!-- .panel end -->
-                    </div>
-                    <!-- .col-md-4 end -->
-                    <!-- Pricing #2 -->
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                        <div class="pricing-panel">
-                            <div class="pricing--content">
-                                <h4 class="pricing--heading">Moustache Trim</h4>
-                                <div class="pricing--divider"></div>
-                                <span class="price">$10.00</span>
-                            </div>
-                            <p class="pricing--desc">Select & Change your hair color for new experience.</p>
-                        </div>
-                        <!-- .panel end -->
-                    </div>
-                    <!-- .col-md-4 end -->
-                    <!-- Pricing #3 -->
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                        <div class="pricing-panel">
-                            <div class="pricing--content">
-                                <h4 class="pricing--heading">Beard Trim</h4>
-                                <div class="pricing--divider"></div>
-                                <span class="price">$15.00</span>
-                            </div>
-                            <p class="pricing--desc">Keep your beard clean and sharp with an awesome style.</p>
-                        </div>
-                        <!-- .panel end -->
-                    </div>
-                    <!-- .col-md-4 end -->
-                    <!-- Pricing #4 -->
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                        <div class="pricing-panel">
-                            <div class="pricing--content">
-                                <h4 class="pricing--heading">Hair Wash</h4>
-                                <div class="pricing--divider"></div>
-                                <span class="price">$6.00</span>
-                            </div>
-                            <p class="pricing--desc">Relax and have a hot towel for cleaning your face.</p>
-                        </div>
-                        <!-- .panel end -->
-                    </div>
-                    <!-- .col-md-4 end -->
-                    <!-- Pricing #5 -->
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                        <div class="pricing-panel">
-                            <div class="pricing--content">
-                                <h4 class="pricing--heading">Hair Color</h4>
-                                <div class="pricing--divider"></div>
-                                <span class="price">$18.00</span>
-                            </div>
-                            <p class="pricing--desc">Select & Change your hair color for new experience.</p>
-                        </div>
-                        <!-- .panel end -->
-                    </div>
-                    <!-- .col-md-4 end -->
-                    <!-- Pricing #6 -->
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                        <div class="pricing-panel">
-                            <div class="pricing--content">
-                                <h4 class="pricing--heading">Face Mask</h4>
-                                <div class="pricing--divider"></div>
-                                <span class="price">$12.00</span>
-                            </div>
-                            <p class="pricing--desc">Our stylist consults & delivers you a precision haircut.</p>
-                        </div>
-                        <!-- .panel end -->
-                    </div>
-                    <!-- .col-md-4 end -->
-                    <!-- Pricing #7 -->
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                        <div class="pricing-panel">
-                            <div class="pricing--content">
-                                <h4 class="pricing--heading">Men’s Facial</h4>
-                                <div class="pricing--divider"></div>
-                                <span class="price">$25.00</span>
-                            </div>
-                            <p class="pricing--desc">Relax and have a hot towel for cleaning your face.</p>
-                        </div>
-                        <!-- .panel end -->
-                    </div>
-                    <!-- .col-md-4 end -->
-                    <!-- Pricing #8 -->
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                        <div class="pricing-panel">
-                            <div class="pricing--content">
-                                <h4 class="pricing--heading">Line Up</h4>
-                                <div class="pricing--divider"></div>
-                                <span class="price">$13.00</span>
-                            </div>
-                            <p class="pricing--desc">Keep your beard clean and sharp with an awesome style.</p>
-                        </div>
-                        <!-- .panel end -->
-                    </div>
-                </div>
-                <!-- .row end -->
-            </div>
-            <!-- .container end -->
-        </section>
-        <!-- #pricing1 end -->
+                            <?php foreach ($serviceService::getServiceItems() as $serviceItem): ?>
 
-        <!-- Team #1
-        ============================================= -->
+                            <div class="pricing--content">
+                                <h4 class="pricing--heading"><?=$serviceItem->name ?></h4>
+                                <div class="pricing--divider"></div>
+                                <span class="price"><?=$serviceItem->price ?></span>
+                            </div>
+                            <p class="pricing--desc"><?=$serviceItem->description ?></p>
+                           <?php endforeach; ?>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <?php endif;?>
+
+
         <section id="team1" class="team team-1">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
                         <div class="text--center heading heading-2 mb-70">
                             <h2 class="heading--title">Наш майстер</h2>
-                            <!--  <p class="heading--desc mb-0">Duis aute irure dolor in reprehenderit volupte velit esse
-                                  cillum dolore eu fugiat pariatursint occaecat cupidatat non proident culpa.</p>-->
-                              <div class="divider--line divider--center"></div>
-                          </div>
-                      </div>
-                      <!-- .col-md-6 end -->
+                           <div class="divider--line divider--center"></div>
+                        </div>
+                    </div>
                 </div>
-                <!-- .row end -->
                 <div class="row">
-                    <!-- Member #1 -->
-
-                    <!-- .col-md-4 end -->
-
-                    <!-- Member #2 -->
                     <div class="col-xs-12 col-sm-4 col-md-4">
                         <div class="member">
                             <div class="member-img">
-                                <img src="<?=Url::to('/themes/frontend/images/team/grid/1.jpg'); ?>" alt="member"/>
+                                <img src="<?= Url::to('/themes/frontend/images/team/grid/1.jpg'); ?>" alt="member"/>
                                 <div class="member-overlay">
                                     <div class="member-social">
                                         <div class="pos-vertical-center">
@@ -252,89 +130,62 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                     </div>
                                 </div>
-                                <!-- .memebr-ovelay end -->
                             </div>
-                            <!-- .member-img end -->
                             <div class="member-info">
                                 <h5>Роман Гученко</h5>
                             </div>
-                            <!-- .member-info end -->
                         </div>
-                        <!-- .member end -->
                     </div>
-                    <!-- .col-md-4 end -->
-
-                    <!-- Member #3 -->
-
-                    <!-- .col-md-4 end -->
                 </div>
             </div>
         </section>
-        <!-- #team4 end  -->
-        <?php if($serviceCallback::hasCarouselItems()): ?>
-        <!-- Testimonial #2
-        ============================================= -->
-        <section id="testimonial2" class="testimonial testimonial-1 bg-overlay bg-overlay-dark bg-parallax text-center">
-            <div class="bg-section">
-                <img src="http://demo.zytheme.com/hairy/assets/images/testimonial/bg-1.jpg" alt="Background"/>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
-                        <div class="text--center heading mb-70">
-                            <h2 class="heading--title color-white">Clients Say</h2>
-                            <p class="heading--desc mb-0 color-gray">Duis aute irure dolor in reprehenderit volupte
-                                velit esse cillum dolore eu fugiat pariatursint occaecat cupidatat non proident
-                                culpa.</p>
-                            <div class="divider--line divider--center"></div>
+
+        <?php if ($serviceCallback::hasCarouselItems()): ?>
+            <section id="testimonial2"
+                     class="testimonial testimonial-1 bg-overlay bg-overlay-dark bg-parallax text-center">
+                <div class="bg-section">
+                    <img src="http://demo.zytheme.com/hairy/assets/images/testimonial/bg-1.jpg" alt="Background"/>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+                            <div class="text--center heading mb-70">
+                                <h2 class="heading--title color-white">Clients Say</h2>
+                                <p class="heading--desc mb-0 color-gray">Duis aute irure dolor in reprehenderit volupte
+                                    velit esse cillum dolore eu fugiat pariatursint occaecat cupidatat non proident
+                                    culpa.</p>
+                                <div class="divider--line divider--center"></div>
+                            </div>
                         </div>
                     </div>
-                    <!-- .col-md-8 end -->
-                </div>
 
 
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div id="testimonial-carousel" class="carousel carousel-dots carousel-white" data-slide="3"
-                             data-slide-rs="1" data-autoplay="false" data-nav="false" data-dots="true" data-space="30"
-                             data-loop="true" data-speed="800">
-                            <!-- Testimonial #1 -->
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div id="testimonial-carousel" class="carousel carousel-dots carousel-white" data-slide="3"
+                                 data-slide-rs="1" data-autoplay="false" data-nav="false" data-dots="true"
+                                 data-space="30"
+                                 data-loop="true" data-speed="800">
+                                <?php foreach ($serviceCallback::getCarouselItems() as $carouselItem): ?>
+
+                                    <div class="testimonial-panel">
 
 
+                                        <div class="testimonial--meta-content">
+                                            <h4><?= $carouselItem->name ?></h4>
+                                        </div>
 
-
-                            <?php foreach ($serviceCallback::getCarouselItems() as $carouselItem): ?>
-
-                                <div class="testimonial-panel">
-
-
-                                    <div class="testimonial--meta-content">
-                                        <h4><?= $carouselItem->name ?></h4>
+                                        <div class="testimonial--body">
+                                            <p><?= $carouselItem->message ?></p>
+                                        </div>
                                     </div>
-
-                                    <div class="testimonial--body">
-                                        <p><?= $carouselItem->message ?></p>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-
-
-                            <!-- .testimonial-panel end -->
-
-
+                                <?php endforeach; ?>
+                            </div>
                         </div>
-                        <!-- .col-md-12 end -->
                     </div>
-                    <!-- .row end -->
-                </div>
+            </section>
 
-
-                <!-- .container end -->
-        </section>
-        <!-- #testimonial2 end -->
-        <?php endif;?>
-        <!-- Callback-form
-       ============================================= -->
+        <?php endif; ?>
         <section id="contact1" class="forms">
             <div class="container">
 
@@ -396,11 +247,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?php $form = ActiveForm::end(); ?>
                         </div>
                     </div>
-                    <!-- .col-md-6 end -->
                 </div>
             </div>
         </section>
-        <!-- Callback-form end -->
 
     </div>
 </div>

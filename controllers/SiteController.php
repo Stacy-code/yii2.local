@@ -4,14 +4,15 @@ namespace app\controllers;
 
 use app\services\book\BookService;
 use app\services\callback\CallbackService;
+use app\services\service\ServiceService;
 use Yii;
 use yii\base\Module as BaseModule;
 use yii\helpers\Url;
 use yii\web\ErrorAction;
 use app\models\Book;
 use app\models\Callback;
-use yii\web\NotFoundHttpException;
-use yii\web\Response;
+use app\models\Service;
+
 
 
 /**
@@ -32,6 +33,11 @@ class SiteController extends AppController
     public $callback;
 
     /**
+     * @var Service $service
+     */
+    public $service;
+
+    /**
      * @var string $layout
      */
     public $layout = 'default';
@@ -39,33 +45,41 @@ class SiteController extends AppController
     /**
      * @var BookService
      */
-    public $service;
+    public $serviceBook;
 
     /**
      * @var CallbackService
      */
     public $serviceCallback;
 
+    /**
+     * @var ServiceService
+     */
+    public $serviceService;
+
 
     /**
      * UserController constructor.
      * @param $id
      * @param $module
-     * @param BookService $service
+     * @param BookService $serviceBook
      * @param CallbackService $serviceCallback
+     * @param ServiceService $serviceService
      * @param array $config
      */
     public function __construct(
         $id,
         BaseModule $module,
-        BookService $service,
+        BookService $serviceBook,
         CallbackService $serviceCallback,
+        ServiceService $serviceService,
         $config = []
     )
     {
         parent::__construct($id, $module, $config);
-        $this->service = $service;
+        $this->service = $serviceBook;
         $this->serviceCallback = $serviceCallback;
+        $this->serviceService = $serviceService;
     }
 
 
@@ -98,7 +112,10 @@ class SiteController extends AppController
         }
         return $this->render('home',[
                 'callback' => new $this->serviceCallback::$modelClass,
+                'service' => new $this->serviceService::$modelClass,
+                'serviceService' =>$this->serviceService,
                 'serviceCallback' => $this->serviceCallback
+
             ]
         );
     }
@@ -129,6 +146,8 @@ class SiteController extends AppController
         }
         return $this->render('book',[
                 'book' => new $this->service::$modelClass,
+                'service' => new $this->serviceService::$modelClass,
+                'serviceService' =>$this->serviceService,
             ]
         );
     }

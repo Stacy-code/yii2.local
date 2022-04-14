@@ -37,7 +37,7 @@ use yii\widgets\ActiveForm;
                 <div class="form-group row">
                     <div class="col-md-10">
                         <?= Html::submitButton(
-                            'Search', [
+                            'Пошук', [
                                 'class' => 'btn btn-secondary mr-2 '
                             ]
                         )?>

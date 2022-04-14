@@ -1102,6 +1102,11 @@ blockquot {
   color: #ffffff;
   border-color: #bb8c4b;
 }
+
+.btn--group{
+  display: flex;
+  margin: 5px;
+}
 /* Button Block */
 .btn--block {
   width: 100%;

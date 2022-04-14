@@ -10,6 +10,8 @@ use app\modules\admin\assets\BookAsset;
 use app\services\book\BookService;
 use Yii;
 use yii\helpers\Url;
+use app\services\service\ServiceService;
+use app\models\Service;
 
 class BookController extends AppController
 {
@@ -18,18 +20,25 @@ class BookController extends AppController
      */
     public $service;
 
+    /**
+     * @var ServiceService
+     */
+    public $serviceService;
+
 
     /**
      * UserController constructor.
      * @param $id
      * @param $module
      * @param BookService $service
+     * @param ServiceService $serviceService
      * @param array $config
      */
-    public function __construct($id, $module, BookService $service, $config = [])
+    public function __construct($id, $module, BookService $service, ServiceService $serviceService, $config = [])
     {
         parent::__construct($id, $module, $config);
         $this->service = $service;
+        $this->serviceService = $serviceService;
     }
 
     public function init()
@@ -63,7 +72,8 @@ class BookController extends AppController
             return Yii::$app->response->redirect(Url::toRoute(['/admin/book/index']), 301);
         }
         return $this->render('create',[
-                'book' => $book
+                'book' => $book,
+                'serviceService'=>$this->serviceService
             ]
         );
     }

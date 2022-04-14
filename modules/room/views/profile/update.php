@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 use kartik\datetime\DateTimePicker;
 
 
-$this->title = 'Profile';
+$this->title = 'Профіль';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -82,7 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <?= Html::submitButton(
-                            'Сохранить', [
+                            'Зберегти', [
                                 'class' => 'btn btn--secondary btn--rounded'
                             ]
                         ) ?>
