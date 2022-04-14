@@ -150,7 +150,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
                             <div class="text--center heading mb-70">
-                                <h2 class="heading--title color-white">Clients Say</h2>
+                                <h2 class="heading--title color-white">Відгуки клієнтів</h2>
                                 <p class="heading--desc mb-0 color-gray">Duis aute irure dolor in reprehenderit volupte
                                     velit esse cillum dolore eu fugiat pariatursint occaecat cupidatat non proident
                                     culpa.</p>

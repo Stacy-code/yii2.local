@@ -92,7 +92,8 @@ class BookController extends AppController
             return Yii::$app->response->redirect(Url::toRoute(['/admin/book/index']), 301);
         }
         return $this->render('update',[
-                'book' => $book
+                'book' => $book,
+                'serviceService'=>$this->serviceService
             ]
         );
     }

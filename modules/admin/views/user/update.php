@@ -46,7 +46,7 @@ use yii\helpers\Url;
                                 <div class="form-group row">
                                     <div class="col-md-10">
                                        <?= Html::submitButton(
-                                           'save', [
+                                           'Зберегти', [
                                                'class' => 'btn btn-secondary mr-2 '
                                            ]
                                        )?>
@@ -57,9 +57,9 @@ use yii\helpers\Url;
 
                             </div>
                         </div>
-                    </div> <!-- end col -->
+                    </div>
                 </div>
-            </div> <!-- container-fluid -->
+            </div>
         </div>
     </div>
 </div>

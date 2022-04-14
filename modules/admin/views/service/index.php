@@ -32,8 +32,8 @@ use yii\helpers\Url;
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                    <li class="breadcrumb-item active">Data Tables</li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Таблиці</a></li>
+                                    <li class="breadcrumb-item active">Таблиця даних</li>
                                 </ol>
                             </div>
 
@@ -112,9 +112,9 @@ use yii\helpers\Url;
 
                             </div>
                         </div>
-                    </div> <!-- end col -->
-                </div> <!-- end row -->
-            </div> <!-- container-fluid -->
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

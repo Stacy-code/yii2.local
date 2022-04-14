@@ -55,9 +55,9 @@ use kartik\datetime\DateTimePicker;
 
                             </div>
                         </div>
-                    </div> <!-- end col -->
+                    </div>
                 </div>
-            </div> <!-- container-fluid -->
+            </div>
         </div>
     </div>
 </div>

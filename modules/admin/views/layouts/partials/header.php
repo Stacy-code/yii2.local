@@ -163,7 +163,7 @@ use \yii\helpers\Url;
                 <li>
                     <a  href="<?= Url::to('/admin/book/index')?>" class="">
                         <i class="ri-table-2"></i>
-                        <span>Список записей</span>
+                        <span>Список записів</span>
                     </a>
                 </li>
 
@@ -171,7 +171,7 @@ use \yii\helpers\Url;
                 <li>
                     <a href="<?= Url::to('/admin/user/index')?>" class=" waves-effect">
                         <i class="ri-table-2"></i>
-                        <span>Список пользователей</span>
+                        <span>Список користувачів</span>
                     </a>
                 </li>
 
@@ -184,7 +184,7 @@ use \yii\helpers\Url;
                 <li>
                     <a href="<?= Url::to('/admin/service/index')?>" class=" waves-effect">
                         <i class="ri-table-2"></i>
-                        <span>Услуги</span>
+                        <span>Послуги</span>
                     </a>
                 </li>
 
@@ -198,7 +198,7 @@ use \yii\helpers\Url;
                 <li>
                     <a href="<?= Url::to('/admin/callback/index')?>" class=" waves-effect">
                         <i class="ri-table-2"></i>
-                        <span>Отзывы</span>
+                        <span>Відгуки</span>
                     </a>
                 </li>
 
@@ -219,6 +219,5 @@ use \yii\helpers\Url;
 
             </ul>
         </div>
-        <!-- Sidebar -->
     </div>
 </div>

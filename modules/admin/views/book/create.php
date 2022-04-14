@@ -83,10 +83,10 @@ use app\models\Service;
                                 <?= $form->field($book, 'status', [
                                     'template' => "<div class=\"form-group row\"><div class=\"col-md-10\">{label}{input}{error}</div></div>",
                                 ])->dropDownList([
-                                    'new' => 'new',
-                                    'in progress' => 'in progress',
-                                    'done' => 'done',
-                                    'failed' => 'failed',
+                                    'Новий' => 'Новий',
+                                    'В прогресі' => 'В прогресі',
+                                    'Вирішено' => 'Вирішено',
+                                    'Провалено' => 'Провалено',
 
                                 ],[
                                     'class' => 'form-control',
@@ -96,7 +96,7 @@ use app\models\Service;
                                 <div class="form-group row">
                                     <div class="col-md-10">
                                         <?= Html::submitButton(
-                                            'save', [
+                                            'Зберегти', [
                                                 'class' => 'btn btn-secondary mr-2 '
                                             ]
                                         )?>

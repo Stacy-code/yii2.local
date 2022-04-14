@@ -31,12 +31,12 @@ use yii\helpers\Url;
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <h4 class="mb-0">Data Tables</h4>
+                            <h4 class="mb-0">Таблиця даних</h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                    <li class="breadcrumb-item active">Data Tables</li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Таблиці</a></li>
+                                    <li class="breadcrumb-item active">Таблиця даних</li>
                                 </ol>
                             </div>
 
@@ -109,18 +109,18 @@ use yii\helpers\Url;
                                                     $columnView = '<div class="btn-group btn-group-sm" role="group"
                                                          aria-label="Large button group">
                                                         <a class="btn btn-secondary mr-2 text-md "
-                                                           href="'. Url::to(['user/update', 'id' => $model->id]) .'">Update</a>
+                                                           href="'. Url::to(['user/update', 'id' => $model->id]) .'">Редагувати</a>
                                                         <a class="btn btn-danger"
                                                            href="'. Url::to(['delete', 'id' => $model->id]) .'"
                                                            data-handler="deleteRow"
-                                                           data-id="'. $model->id .'">Delete</a>
+                                                           data-id="'. $model->id .'">Видалити</a>
                                                     </div>';
 
                                                 }else{
                                                     $columnView = '<div class="btn-group btn-group-sm" role="group"
                                                          aria-label="Large button group">
                                                         <a class="btn btn-secondary mr-2 text-md "
-                                                           href="'. Url::to(['user/update', 'id' => $model->id]) .'">Update</a>
+                                                           href="'. Url::to(['user/update', 'id' => $model->id]) .'">Редагувати</a>
                                                     </div>';
                                                 }
                                                 return $columnView;

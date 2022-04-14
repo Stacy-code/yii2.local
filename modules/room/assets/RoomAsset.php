@@ -44,8 +44,6 @@ class RoomAsset extends BaseAssetBundle
     public $depends = [
         YiiAsset::class,
         JqueryAsset::class,
-
-
     ];
 
 

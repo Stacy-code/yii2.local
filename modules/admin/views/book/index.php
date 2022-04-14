@@ -36,7 +36,7 @@ use app\modules\admin\widgets\FilterTable\FilterTableWidget;
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                    <li class="breadcrumb-item active">Data Tables</li>
+                                    <li class="breadcrumb-item active">Таблиця данних</li>
                                 </ol>
                             </div>
 
@@ -96,7 +96,7 @@ use app\modules\admin\widgets\FilterTable\FilterTableWidget;
                         <div class="card">
                             <div class="card-body">
 
-                                <h4 class="card-title">Таблица записів</h4>
+                                <h4 class="card-title">Таблиця записів</h4>
                                 <?= GridView::widget([
                                     'dataProvider' => $dataProvider,
                                     'columns' => [
@@ -125,11 +125,11 @@ use app\modules\admin\widgets\FilterTable\FilterTableWidget;
                                                     $columnView = '<div class="btn-group btn-group-sm" role="group"
                                                          aria-label="Large button group">
                                                         <a class="btn btn-secondary mr-2 text-md "
-                                                           href="'. Url::to(['book/update', 'id' => $model->id]) .'">Update</a>
+                                                           href="'. Url::to(['book/update', 'id' => $model->id]) .'">Редагувати</a>
                                                         <a class="btn btn-danger"
                                                            href="'. Url::to(['delete', 'id' => $model->id]) .'"
                                                            data-handler="deleteRow"
-                                                           data-id="'. $model->id .'">Delete</a>
+                                                           data-id="'. $model->id .'">Видалити</a>
                                                     </div>';
 
 

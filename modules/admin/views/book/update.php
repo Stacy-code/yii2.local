@@ -3,11 +3,18 @@
 
 /* @var $book app\models\Book */
 
+/* @var $service Service */
+
+/* @var $serviceService ServiceService */
+
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use app\models\Book;
 use yii\helpers\Url;
 use kartik\datetime\DateTimePicker;
+use app\services\service\ServiceService;
+use app\models\Service;
 
 ?>
 
@@ -44,20 +51,14 @@ use kartik\datetime\DateTimePicker;
 
 
 
-
+                                <?php if ($serviceService::hasServiceItems()): ?>
                                 <?= $form->field($book, 'service', [
                                     'template' => "<div class=\"form-group row\"><div class=\"col-md-10\">{label}{input}{error}</div></div>",
-                                ])->dropDownList([
-                                    'Чоловіча стрижка' => 'Чоловіча стрижка',
-                                    'Стрижка бороди' => 'Стрижка бороди',
-                                    'Стрижка вусів' => 'Стрижка вусів',
-                                    'Королівське гоління' => 'Королівське гоління',
-                                    'Чоловіча стрижка + борода' => 'Чоловіча стрижка + борода',
-                                ],[
+                                ])->dropDownList(ArrayHelper::map($serviceService::getServiceItems(), 'name', 'name'),[
                                     'class' => 'form-control',
                                     'prompt'=>'Виберіть послугу'
-                                ],) ?>
-
+                                ]) ?>
+                                <?php endif;?>
 
                                 <?=$form->field($book, 'date', [
                                     'template' => "<div class=\"form-group row\"><div class=\"col-md-10\">{label}{input}{error}</div></div>",
@@ -87,10 +88,10 @@ use kartik\datetime\DateTimePicker;
                                 <?= $form->field($book, 'status', [
                                     'template' => "<div class=\"form-group row\"><div class=\"col-md-10\">{label}{input}{error}</div></div>",
                                 ])->dropDownList([
-                                    'new' => 'new',
-                                    'in progress' => 'in progress',
-                                    'done' => 'done',
-                                    'failed' => 'failed',
+                                    'Новий' => 'Новий',
+                                    'В прогресі' => 'В прогресі',
+                                    'Вирішено' => 'Вирішено',
+                                    'Провалено' => 'Провалено',
 
                                 ],[
                                     'class' => 'form-control',
@@ -100,7 +101,7 @@ use kartik\datetime\DateTimePicker;
                                 <div class="form-group row">
                                     <div class="col-md-10">
                                         <?= Html::submitButton(
-                                            'save', [
+                                            'Зберегти', [
                                                 'class' => 'btn btn-secondary mr-2 '
                                             ]
                                         )?>

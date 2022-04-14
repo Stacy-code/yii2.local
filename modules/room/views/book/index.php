@@ -83,7 +83,7 @@ use yii\helpers\Url;
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">Таблица записів</h4>
+                        <h4 class="card-title">Таблиця записів</h4>
                         <?= GridView::widget([
                             'dataProvider' => $dataProvider,
                             'columns' => [
